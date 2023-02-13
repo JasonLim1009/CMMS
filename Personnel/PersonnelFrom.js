@@ -71,15 +71,15 @@ const PersonnalFrom = (props) => {
 
     const [Emp_PayRate, setEmp_PayRate] = useState("0");
 
-    const [sex, setSex] = useState([{label:"M:Male",value:""},{label:"F:Female",value:""}]);
+    const [sex, setSex] = useState([{label:"M : Male",value:""},{label:"F : Female",value:""}]);
     const [selected_sex, setSelected_sex] = useState([]);
 
     const [Emp_PayPeriod, setEmp_PayPeriod] = useState("");
 
-    const [marital_status, setMarital_status] = useState([{label:"S:Single",value:""},{label:"M:Married",value:""},{label:"D:Divorced",value:""}]);
+    const [marital_status, setMarital_status] = useState([{label:"S : Single",value:""},{label:"M : Married",value:""},{label:"D : Divorced",value:""}]);
     const [selected_marital_status, setSelected_marital_status] = useState([]);
 
-    const [shift, setShift] = useState([{label:"M:Morning",value:""},{label:"A:Afternoon",value:""},{label:"E:Evening",value:""}]);
+    const [shift, setShift] = useState([{label:"M : Morning",value:""},{label:"A : Afternoon",value:""},{label:"E : Evening",value:""}]);
     const [selected_shift, setSelected_shift] = useState([]);
 
     const [Emp_EmailID, setEmp_EmailID] = useState("");
@@ -1046,40 +1046,40 @@ const PersonnalFrom = (props) => {
         "emp_det_webwork":CheckBox_Webwork,
 
 
-        "emp_det_note1":'',
-        "emp_det_varchar1":'',
-        "emp_det_varchar2":'',
-        "emp_det_varchar3":'',
-        "emp_det_varchar4":'',
-        "emp_det_varchar5":'',
-        "emp_det_varchar6":'',
-        "emp_det_varchar7":'',
-        "emp_det_varchar8":'',
-        "emp_det_varchar9":'',
-        "emp_det_varchar10":'',
+        "emp_det_note1":UDFNote1,
+        "emp_det_varchar1":UDFText_1,
+        "emp_det_varchar2":UDFText_2,
+        "emp_det_varchar3":UDFText_3,
+        "emp_det_varchar4":UDFText_4,
+        "emp_det_varchar5":UDFText_5,
+        "emp_det_varchar6":UDFText_6,
+        "emp_det_varchar7":UDFText_7,
+        "emp_det_varchar8":UDFText_8,
+        "emp_det_varchar9":UDFText_9,
+        "emp_det_varchar10":UDFText_10,
 
-        "emp_det_note2":'',
-        "emp_det_varchar11":'',           
-        "emp_det_varchar12":'',
-        "emp_det_varchar13":'',
-        "emp_det_varchar14":'',
-        "emp_det_varchar15":'',
-        "emp_det_varchar16":'',
-        "emp_det_varchar17":'',
-        "emp_det_varchar18":'',
-        "emp_det_varchar19":'',
-        "emp_det_varchar20":'',
+        "emp_det_note2":UDFNote2,
+        "emp_det_varchar11":UDFText_11,         
+        "emp_det_varchar12":UDFText_12,
+        "emp_det_varchar13":UDFText_13,
+        "emp_det_varchar14":UDFText_14,
+        "emp_det_varchar15":UDFText_15,
+        "emp_det_varchar16":UDFText_16,
+        "emp_det_varchar17":UDFText_17,
+        "emp_det_varchar18":UDFText_18,
+        "emp_det_varchar19":UDFText_19,
+        "emp_det_varchar20":UDFText_20,
 
-        "emp_det_numeric1":UDFNumber_1.trim(),
-        "emp_det_numeric2":UDFNumber_2.trim(),
-        "emp_det_numeric3":UDFNumber_3.trim(),
-        "emp_det_numeric4":UDFNumber_4.trim(),
-        "emp_det_numeric5":UDFNumber_5.trim(),
-        "emp_det_numeric6":UDFNumber_6.trim(),
-        "emp_det_numeric7":UDFNumber_7.trim(),
-        "emp_det_numeric8":UDFNumber_8.trim(),
-        "emp_det_numeric9":UDFNumber_9.trim(),
-        "emp_det_numeric10":UDFNumber_10.trim(),
+        "emp_det_numeric1":UDFNumber_1,
+        "emp_det_numeric2":UDFNumber_2,
+        "emp_det_numeric3":UDFNumber_3,
+        "emp_det_numeric4":UDFNumber_4,
+        "emp_det_numeric5":UDFNumber_5,
+        "emp_det_numeric6":UDFNumber_6,
+        "emp_det_numeric7":UDFNumber_7,
+        "emp_det_numeric8":UDFNumber_8,
+        "emp_det_numeric9":UDFNumber_9,
+        "emp_det_numeric10":UDFNumber_10,
 
         "emp_det_datetime1":date_of_time1,
         "emp_det_datetime2":date_of_time2,
@@ -1500,29 +1500,29 @@ const PersonnalFrom = (props) => {
         "emp_det_webwork":CheckBox_Webwork,
 
 
-        "emp_det_note1":'',
-        "emp_det_varchar1":'',
-        "emp_det_varchar2":'',
-        "emp_det_varchar3":'',
-        "emp_det_varchar4":'',
-        "emp_det_varchar5":'',
-        "emp_det_varchar6":'',
-        "emp_det_varchar7":'',
-        "emp_det_varchar8":'',
-        "emp_det_varchar9":'',
-        "emp_det_varchar10":'',
+        "emp_det_note1":UDFNote1,
+        "emp_det_varchar1":UDFText_1,
+        "emp_det_varchar2":UDFText_2,
+        "emp_det_varchar3":UDFText_3,
+        "emp_det_varchar4":UDFText_4,
+        "emp_det_varchar5":UDFText_5,
+        "emp_det_varchar6":UDFText_6,
+        "emp_det_varchar7":UDFText_7,
+        "emp_det_varchar8":UDFText_8,
+        "emp_det_varchar9":UDFText_9,
+        "emp_det_varchar10":UDFText_10,
 
-        "emp_det_note2":'',
-        "emp_det_varchar11":'',           
-        "emp_det_varchar12":'',
-        "emp_det_varchar13":'',
-        "emp_det_varchar14":'',
-        "emp_det_varchar15":'',
-        "emp_det_varchar16":'',
-        "emp_det_varchar17":'',
-        "emp_det_varchar18":'',
-        "emp_det_varchar19":'',
-        "emp_det_varchar20":'',
+        "emp_det_note2":UDFNote2,
+        "emp_det_varchar11":UDFText_11,         
+        "emp_det_varchar12":UDFText_12,
+        "emp_det_varchar13":UDFText_13,
+        "emp_det_varchar14":UDFText_14,
+        "emp_det_varchar15":UDFText_15,
+        "emp_det_varchar16":UDFText_16,
+        "emp_det_varchar17":UDFText_17,
+        "emp_det_varchar18":UDFText_18,
+        "emp_det_varchar19":UDFText_19,
+        "emp_det_varchar20":UDFText_20,
 
         "emp_det_numeric1":UDFNumber_1,
         "emp_det_numeric2":UDFNumber_2,
@@ -1949,7 +1949,7 @@ const PersonnalFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <Form.Group className="row" controlId="validation_AssetNo">
+                                <Form.Group className="row" controlId="validation_Emp_EmployeeID">
                                     <label className="col-sm-5 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Employee ID:</label>
                                     <div className="col-sm-7">
                                         <Form.Control  type="text" value={Emp_EmployeeID} onChange={(e) => setEmp_EmployeeID(e.target.value)}/>
@@ -1959,7 +1959,7 @@ const PersonnalFrom = (props) => {
 
 
                             <div className="col-md-6">
-                                <Form.Group className="row" controlId="validation_AssetStatus">
+                                <Form.Group className="row" controlId="validation_Emp_Name">
                                     <label className="col-sm-2 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Name:</label>
                                     <div className="col-sm-10">
                                         <Form.Control  type="text" value={Emp_Name} onChange={(e) => setEmp_Name(e.target.value)}/>
@@ -1972,7 +1972,7 @@ const PersonnalFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <Form.Group className="row" controlId="validation_ShortDesc">                                  
+                                <Form.Group className="row" controlId="validation_Employee_Status">                                  
                                     <Form.Label className="col-sm-5 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Status:</Form.Label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -1988,7 +1988,7 @@ const PersonnalFrom = (props) => {
                             </div>
 
                             <div className="col-md-6">
-                                <Form.Group className="row" controlId="validation_AssetNo">
+                                <Form.Group className="row" controlId="validation_Emp_Title">
                                     <label className="col-sm-2 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Title:</label>
                                     <div className="col-sm-10">
                                         <Form.Control  type="text" value={Emp_Title} onChange={(e) => setEmp_Title(e.target.value)}/>
@@ -2001,7 +2001,7 @@ const PersonnalFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-6">                                
-                                <Form.Group className="row" controlId="validation_LongDesc">
+                                <Form.Group className="row" controlId="validation_Employee_User_Group">
                                     <Form.Label className="col-sm-5 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>User Group:</Form.Label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2016,7 +2016,7 @@ const PersonnalFrom = (props) => {
                             </div>
 
                             <div className="col-md-4">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Employee_Login_Id">
                                     <label className="col-sm-3 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Login ID:</label>
                                     <div className="col-sm-8">
                                     <Select  
@@ -2031,7 +2031,7 @@ const PersonnalFrom = (props) => {
                             </div> 
 
                             <div className="col-md-2">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_CreateNewUserLogin">
                                     <label className="col-sm-9 col-form-label"><a href="">Create New User Login</a></label>
                                 </Form.Group>
                             </div>
@@ -2041,7 +2041,7 @@ const PersonnalFrom = (props) => {
                         <div className="row">
                             
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Dashboard_Access">
                                     <label className="col-sm-5 col-form-label">Dashboard Access:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2055,7 +2055,7 @@ const PersonnalFrom = (props) => {
                             </div>  
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_PrivilegeTemplate">
                                     <label className="col-sm-5 col-form-label">Privilege Template:</label>
                                 </Form.Group>
                             </div>
@@ -2111,7 +2111,7 @@ const PersonnalFrom = (props) => {
                             
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_Emp_HomePhone">
                                                 <label className="col-sm-3 col-form-label">Home Phone:</label>
                                                 <div className="col-sm-9">
                                                     <Form.Control  type="number" value={Emp_HomePhone} onChange={(e) => setEmp_HomePhone(e.target.value)}/>
@@ -2120,7 +2120,7 @@ const PersonnalFrom = (props) => {
                                         </div>  
 
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_BirthDate">
                                                 <label className="col-sm-3 col-form-label">Date of Birth:</label>
                                                 <div className="col-sm-9">
                                                             <Form.Control
@@ -2136,7 +2136,7 @@ const PersonnalFrom = (props) => {
 
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_Emp_EmergencyName">
                                                 <label className="col-sm-3 col-form-label">Emergency Name:</label>
                                                 <div className="col-sm-9">
                                                     <Form.Control  type="text" value={Emp_EmergencyName} onChange={(e) => setEmp_EmergencyName(e.target.value)}/>
@@ -2145,7 +2145,7 @@ const PersonnalFrom = (props) => {
                                         </div>  
 
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_HireDate">
                                                 <label className="col-sm-3 col-form-label">Date of Hire:</label>
                                                 <div className="col-sm-9">
                                                 <Form.Control                                            
@@ -2161,7 +2161,7 @@ const PersonnalFrom = (props) => {
 
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_Emp_EmergencyPhone">
                                                 <label className="col-sm-3 col-form-label">Emergency Phone:</label>
                                                 <div className="col-sm-9">
                                                     <Form.Control  type="number" value={Emp_EmergencyPhone} onChange={(e) => setEmp_EmergencyPhone(e.target.value)}/>
@@ -2170,7 +2170,7 @@ const PersonnalFrom = (props) => {
                                         </div>  
 
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_Emp_PayRate">
                                                 <label className="col-sm-3 col-form-label">Pay Rate:</label>
                                                 <div className="col-sm-9">
                                                     <Form.Control  type="number" value={Emp_PayRate} onChange={(e) => setEmp_PayRate(e.target.value)}/>
@@ -2182,7 +2182,7 @@ const PersonnalFrom = (props) => {
 
                                     <div className='row'>
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_sex">
                                                 <label className="col-sm-3 col-form-label">Sex:</label>
                                                 <div className="col-sm-9">
                                                 <Select  
@@ -2196,7 +2196,7 @@ const PersonnalFrom = (props) => {
                                         </div>  
 
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_Emp_PayPeriod">
                                                 <label className="col-sm-3 col-form-label">Pay Period:</label>
                                                 <div className="col-sm-9">
                                                     <Form.Control  type="text" value={Emp_PayPeriod} onChange={(e) => setEmp_PayPeriod(e.target.value)}/>
@@ -2209,7 +2209,7 @@ const PersonnalFrom = (props) => {
                                     <div className='row'>
                                         
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_marital_statuse">
                                                 <label className="col-sm-3 col-form-label">Marital Status:</label>
                                                 <div className="col-sm-9">
                                                 <Select  
@@ -2223,7 +2223,7 @@ const PersonnalFrom = (props) => {
                                         </div>  
 
                                         <div className="col-md-6">
-                                            <Form.Group className="row">
+                                            <Form.Group className="row" controlId="validation_marital_statuse">
                                                 <label className="col-sm-3 col-form-label">Shift:</label>
                                                 <div className="col-sm-9">
                                                     <Select  
