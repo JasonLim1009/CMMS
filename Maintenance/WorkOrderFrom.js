@@ -49,8 +49,8 @@ const WorkOrderFrom = (props) => {
 
     
 
-    const [WorkOrdeNo, setWorkOrdeNo] = useState("");
-    const [WorkOrdeNo_disabled, setWorkOrdeNo_disabled] = useState(false);
+    const [WorkOrderNo, setWorkOrderNo] = useState("");
+    const [WorkOrderNo_disabled, setWorkOrderNo_disabled] = useState(false);
 
     const [Asset_No, setAsset_No] = useState([]);
     const [selected_Asset_No, setSelected_Asset_No] = useState([]);
@@ -226,11 +226,11 @@ const WorkOrderFrom = (props) => {
 
                 if(responseJson.data.data.Wko_Auto_numbering[index].cnt_mst_numbering == "M" ){
 
-                    setWorkOrdeNo_disabled(false)
+                    setWorkOrderNo_disabled(false)
                     setAutoNumring('M')
                 }else{
                     
-                    setWorkOrdeNo_disabled(true)
+                    setWorkOrderNo_disabled(true)
                     setAutoNumring('A')
                 }              
             }
@@ -507,7 +507,7 @@ const WorkOrderFrom = (props) => {
 
 
                 
-                setWorkOrdeNo(responseJson.data.data[index].wko_mst_wo_no )
+                setWorkOrderNo(responseJson.data.data[index].wko_mst_wo_no )
                 setSelected_Asset_No( {label:responseJson.data.data[index].wko_mst_assetno} )
                 setSelected_Status( {label:responseJson.data.data[index].wko_mst_status} )
                 setSelected_Asset_Status( {label:responseJson.data.data[index].wko_mst_asset_status} )
@@ -864,8 +864,8 @@ const WorkOrderFrom = (props) => {
 
 
         
-        //Select WorkOrdeNo
-        console.log("WorkOrdeNo: ", WorkOrdeNo)
+        //Select WorkOrderNo
+        console.log("WorkOrderNo: ", WorkOrderNo)
 
         //Select Asset No
         let Asset_No, setAsset_No;
@@ -1324,7 +1324,7 @@ const WorkOrderFrom = (props) => {
 
         "site_cd": site_ID,
       
-        "wko_mst_wo_no": WorkOrdeNo.trim(),
+        "wko_mst_wo_no": WorkOrderNo.trim(),
         "wko_mst_assetno":setAsset_No.trim(),
         "wko_mst_status":Status[0].trim(),
         "wko_mst_asset_status":setAsset_Status.trim(),
@@ -1374,17 +1374,17 @@ const WorkOrderFrom = (props) => {
         "wko_det_saccount":setMiscellaneous_Account.trim(),     
                 
 
-        "wko_det_note1":'',
-        "wko_det_varchar1":'',
-        "wko_det_varchar2":'',
-        "wko_det_varchar3":'',
-        "wko_det_varchar4":'',
-        "wko_det_varchar5":'',
-        "wko_det_varchar6":'',
-        "wko_det_varchar7":'',
-        "wko_det_varchar8":'',
-        "wko_det_varchar9":'',
-        "wko_det_varchar10":'',
+        "wko_det_note1":UDFNote1,
+        "wko_det_varchar1":UDFText_1,
+        "wko_det_varchar2":UDFText_2,
+        "wko_det_varchar3":UDFText_3,
+        "wko_det_varchar4":UDFText_4,
+        "wko_det_varchar5":UDFText_5,
+        "wko_det_varchar6":UDFText_6,
+        "wko_det_varchar7":UDFText_7,
+        "wko_det_varchar8":UDFText_8,
+        "wko_det_varchar9":UDFText_9,
+        "wko_det_varchar10":UDFText_10,
 
         "wko_det_numeric1":UDFNumber_1.trim(),
         "wko_det_numeric2":UDFNumber_2.trim(),
@@ -1465,8 +1465,8 @@ const WorkOrderFrom = (props) => {
 
 
 
-        //Select WorkOrdeNo
-        console.log("WorkOrdeNo: ", WorkOrdeNo)
+        //Select WorkOrderNo
+        console.log("WorkOrderNo: ", WorkOrderNo)
 
         //Select Asset No
         let Asset_No, setAsset_No;
@@ -1925,7 +1925,7 @@ const WorkOrderFrom = (props) => {
 
         "site_cd": site_ID,
       
-        "wko_mst_wo_no": WorkOrdeNo.trim(),
+        "wko_mst_wo_no": WorkOrderNo.trim(),
         "wko_mst_assetno":setAsset_No.trim(),
         "wko_mst_status":Status[0].trim(),
         "wko_mst_asset_status":setAsset_Status.trim(),
@@ -1976,16 +1976,16 @@ const WorkOrderFrom = (props) => {
 
 
         "wko_det_note1":UDFNote1,
-        "wko_det_varchar1":'',
-        "wko_det_varchar2":'',
-        "wko_det_varchar3":'',
-        "wko_det_varchar4":'',
-        "wko_det_varchar5":'',
-        "wko_det_varchar6":'',
-        "wko_det_varchar7":'',
-        "wko_det_varchar8":'',
-        "wko_det_varchar9":'',
-        "wko_det_varchar10":'',
+        "wko_det_varchar1":UDFText_1,
+        "wko_det_varchar2":UDFText_2,
+        "wko_det_varchar3":UDFText_3,
+        "wko_det_varchar4":UDFText_4,
+        "wko_det_varchar5":UDFText_5,
+        "wko_det_varchar6":UDFText_6,
+        "wko_det_varchar7":UDFText_7,
+        "wko_det_varchar8":UDFText_8,
+        "wko_det_varchar9":UDFText_9,
+        "wko_det_varchar10":UDFText_10,
 
         "wko_det_numeric1":UDFNumber_1,
         "wko_det_numeric2":UDFNumber_2,
@@ -2217,17 +2217,17 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <Form.Group className="row" controlId="validation_AssetNo">
+                                <Form.Group className="row" controlId="validation_WorkOrderNo">
                                     <label className="col-sm-4 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Work Order No:</label>
                                     <div className="col-sm-7">
-                                            <Form.Control  type="text" value={WorkOrdeNo} onChange={(e) => setWorkOrdeNo(e.target.value)}  disabled={WorkOrdeNo_disabled}/>
+                                            <Form.Control  type="text" value={WorkOrderNo} onChange={(e) => setWorkOrderNo(e.target.value)}  disabled={WorkOrderNo_disabled}/>
                                         </div>
                                 </Form.Group>
                             </div>
 
 
                             <div className="col-md-6">                                
-                                <Form.Group className="row" controlId="validation_LongDesc">
+                                <Form.Group className="row" controlId="validation_Asset_No">
                                     <Form.Label className="col-sm-5 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Asset No:</Form.Label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2246,7 +2246,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <Form.Group className="row" controlId="validation_ShortDesc">                                  
+                                <Form.Group className="row" controlId="validation_Status">                                  
                                     <Form.Label className="col-sm-4 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Status:</Form.Label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2262,7 +2262,7 @@ const WorkOrderFrom = (props) => {
                             </div>
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Asset_Status"> 
                                     <label className="col-sm-5 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Asset Status:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2281,7 +2281,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <Form.Group className="row" controlId="validation_AssetStatus">
+                                <Form.Group className="row" controlId="validation_Plan_Priority">
                                     <label className="col-sm-4 col-form-label">Plan Periority:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2296,7 +2296,7 @@ const WorkOrderFrom = (props) => {
                             </div>
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Asset_Group_Code">
                                     <label className="col-sm-5 col-form-label">Asset Group Code:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2315,7 +2315,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_OriginationDate">
                                     <label className="col-sm-4 col-form-label">Origination Date:</label>
                                     <div className="col-sm-7">
                                                 <Form.Control
@@ -2328,7 +2328,7 @@ const WorkOrderFrom = (props) => {
                             </div> 
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Charge_Cost_Center">
                                     <label className="col-sm-5 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Charge Cost Center:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2347,7 +2347,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
                             
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_DueDate">
                                     <label className="col-sm-4 col-form-label">Due Date:</label>
                                     <div className="col-sm-7">
                                             <Form.Control
@@ -2360,7 +2360,7 @@ const WorkOrderFrom = (props) => {
                             </div>
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Work_Area">
                                     <label className="col-sm-5 col-form-label">Work Area:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2379,7 +2379,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
                             
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Originator">
                                     <label className="col-sm-4 col-form-label">Originator:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2394,7 +2394,7 @@ const WorkOrderFrom = (props) => {
                             </div>  
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Asset_Level">
                                     <label className="col-sm-5 col-form-label">Asset Level:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2413,7 +2413,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
                             
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Phone">
                                     <label className="col-sm-4 col-form-label">Phone:</label>
                                     <div className="col-sm-7">
                                         <Form.Control  type="number" value={Phone} onChange={(e) => setPhone(e.target.value)}/>
@@ -2422,7 +2422,7 @@ const WorkOrderFrom = (props) => {
                             </div>
 
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Asset_Location">
                                     <label className="col-sm-5 col-form-label">Asset Location:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2441,7 +2441,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
                             
                             <div className="col-md-6">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Fault_Code">
                                     <label className="col-sm-4 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Fault Code:</label>
                                     <div className="col-sm-7">
                                         <Select  
@@ -2456,13 +2456,13 @@ const WorkOrderFrom = (props) => {
                             </div>  
 
                             <div className="col-md-3">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_CreatedBy">
                                     <label className="col-sm-6 col-form-label"><span style={{color: "blue"}} class="required-asterisk"> Created By: </span></label>
                                 </Form.Group>
                             </div>
 
                             <div className="col-md-3">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_CreatedDate">
                                     <label className="col-sm-6 col-form-label"><span style={{color: "blue"}} class="required-asterisk"> Created Date: </span></label>
                                 </Form.Group>
                             </div>
@@ -2472,7 +2472,7 @@ const WorkOrderFrom = (props) => {
                         <div className="row">
 
                             <div className="col-md-12">
-                                <Form.Group className="row">
+                                <Form.Group className="row" controlId="validation_Description">
                                     <label className="col-sm-2 col-form-label"><span style={{color: "red"}} class="required-asterisk">* </span>Description:</label>
                                     <div className="col-sm-10">
                                     <Form.Control 
