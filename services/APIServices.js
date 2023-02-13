@@ -1516,6 +1516,7 @@ const get_workrequest_select = (site_cd, RowID) => {
 
 
 //----------------------------------------------------------------------% Work Order %-----------------------------------------------------------------
+
 //WorkOrder Master List
 const get_workordermaster = (site_cd, page, pageSize) => {
   return http.get(
@@ -1792,10 +1793,288 @@ const get_workorder_level_delete = (site_cd, rowid) => {
 };
 
 
+//----------------------------------------------------------------------% WorkRequest %-----------------------------------------------------------------
+
+//Inventory  Master List
+const get_inventorymaster = (site_cd, page, pageSize) => {
+  return http.get(
+    `/get_inventorymaster.php?site_cd=${site_cd}&page=${page}&pageSize=${pageSize}`
+  );
+};
+
+//Inventory Master Select List
+const get_inventorymaster_select = (RowID) => {
+  return http.get(`/get_inventorymaster_select.php?RowID=${RowID}`);
+};
+
+//Insert Inventory Master
+const insert_new_inventory = (data) => {
+  return http.post(`/insert_new_inventory.php?`, data);
+};
+
+//Update Inventory Master
+const update_inventory = (data) => {
+  return http.post(`/update_inventory.php?`, data);
+};
+
+
+
+//Inventory Type List
+const get_inventory_type = (site_cd) => {
+  return http.get(`/get_inventory_type.php?site_cd=${site_cd}`);
+};
+
+//Inventory Type select List
+const get_inventory_type_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_type_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Insert Inventory Type
+const get_inventory_type_insert = (data) => {
+  return http.post(`/get_inventory_type_insert.php?`, data);
+};
+
+//Update Inventory Type
+const get_inventory_type_update = (data) => {
+  return http.post(`/get_inventory_type_update.php?`, data);
+};
+
+//Delete Inventory Type
+const get_inventory_type_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_type_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+
+
+//Inventory GroupCode List
+const get_inventory_group_code = (site_cd) => {
+  return http.get(`/get_inventory_group_code.php?site_cd=${site_cd}`);
+};
+
+//Inventory Group Code select List
+const get_inventory_group_cd_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_group_cd_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Insert Inventory
+const get_inventory_groupcode_insert = (data) => {
+  return http.post(`/get_inventory_groupcode_insert.php?`, data);
+};
+
+//Update Inventory
+const get_inventory_groupcode_update = (data) => {
+  return http.post(`/get_inventory_groupcode_update.php?`, data);
+};
+
+//Delete Inventory
+const get_inventory_groupcode_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_groupcode_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+
+
+//Inventory Code List
+const get_inventory_code = (site_cd) => {
+  return http.get(`/get_inventory_code.php?site_cd=${site_cd}`);
+};
+
+//Inventory Code select List
+const get_inventory_code_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_code_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Insert Inventory Code
+const get_inventory_code_insert = (data) => {
+  return http.post(`/get_inventory_code_insert.php?`, data);
+};
+
+//Update Inventory Code
+const get_inventory_code_update = (data) => {
+  return http.post(`/get_inventory_code_update.php?`, data);
+};
+
+//Delete Inventory Code
+const get_inventory_code_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_code_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+
+
+//Critical Factor List
+const get_inventory_critical_factor = (site_cd) => {
+  return http.get(`/get_inventory_critical_factor.php?site_cd=${site_cd}`);
+};
+
+//Critical Factor select List
+const get_inventory_critical_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_critical_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Insert Critical Factor
+const get_inventory_criticalfactor_insert = (data) => {
+  return http.post(`/get_inventory_criticalfactor_insert.php?`, data);
+};
+
+//Update Critical Factor
+const get_inventory_criticalfactor_update = (data) => {
+  return http.post(`/get_inventory_criticalfactor_update.php?`, data);
+};
+
+//Delete Critical Factor List
+const get_inventory_criticalfactor_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_criticalfactor_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+
+
+//Inventory Status List
+const get_inventory_status = (site_cd) => {
+  return http.get(`/get_inventory_status.php?site_cd=${site_cd}`);
+};
+
+//Inventory select List
+const get_inventory_status_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_status_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Status Type List
+const get_inventory_status_type = (site_cd) => {
+  return http.get(`/get_inventory_status_type.php?site_cd=${site_cd}`);
+};
+
+//Insert Inventory Status
+const get_inventory_status_insert = (data) => {
+  return http.post(`/get_inventory_status_insert.php?`, data);
+};
+
+//Update Inventory Status
+const get_inventory_status_update = (data) => {
+  return http.post(`/get_inventory_status_update.php?`, data);
+};
+
+//Delete Inventory Status
+const get_inventory_status_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_status_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+
+
+//Work Area List
+const get_inventory_work_area = (site_cd) => {
+  return http.get(`/get_inventory_work_area.php?site_cd=${site_cd}`);
+};
+
+//Work Area select List
+const get_inventory_workarea_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_workarea_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Insert Inventory Status
+const get_inventory_workarea_insert = (data) => {
+  return http.post(`/get_inventory_workarea_insert.php?`, data);
+};
+
+//Update Inventory Status
+const get_inventory_workarea_update = (data) => {
+  return http.post(`/get_inventory_workarea_update.php?`, data);
+};
+
+//Delete Inventory Status
+const get_inventory_workarea_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_workarea_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+
+
+//Inventory Location
+const get_inventory_location = (site_cd) => {
+  return http.get(`/get_inventory_location.php?site_cd=${site_cd}`);
+};
+
+//Inventory Location select List
+const get_inventory_location_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_location_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Insert Inventory Location
+const get_inventory_location_insert = (data) => {
+  return http.post(`/get_inventory_location_insert.php?`, data);
+};
+
+//Update Inventory Location
+const get_inventory_location_update = (data) => {
+  return http.post(`/get_inventory_location_update.php?`, data);
+};
+
+//Delete Inventory Location
+const get_inventory_location_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_location_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+
+
+//Inventory Level
+const get_inventory_level = (site_cd) => {
+  return http.get(`/get_inventory_level.php?site_cd=${site_cd}`);
+};
+
+//Inventory Level select List
+const get_inventory_level_select = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_level_select.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
+//Insert Inventory Level
+const get_inventory_level_insert = (data) => {
+  return http.post(`/get_inventory_level_insert.php?`, data);
+};
+
+//Update Inventory Level
+const get_inventory_level_update = (data) => {
+  return http.post(`/get_inventory_level_update.php?`, data);
+};
+
+//Delete Inventory Level
+const get_inventory_level_delete = (site_cd, rowid) => {
+  return http.get(
+    `/get_inventory_level_delete.php?site_cd=${site_cd}&RowID=${rowid}`
+  );
+};
+
 
 
 const APIServices = {
 
+  
   get_employeemaster,
   get_employeemaster_select,
   insert_new_employee,
@@ -2196,6 +2475,61 @@ const APIServices = {
   get_workorder_level_insert,
   get_workorder_level_update,
   get_workorder_level_delete,
+
+  get_inventorymaster,
+  get_inventorymaster_select,
+  insert_new_inventory,
+  update_inventory,
+  
+  get_inventory_type,
+  get_inventory_type_select,
+  get_inventory_type_insert,
+  get_inventory_type_update,
+  get_inventory_type_delete,
+  
+  get_inventory_group_code,
+  get_inventory_group_cd_select,
+  get_inventory_groupcode_insert,
+  get_inventory_groupcode_update,
+  get_inventory_groupcode_delete,
+  
+  get_inventory_code,
+  get_inventory_code_select,
+  get_inventory_code_insert,
+  get_inventory_code_update,
+  get_inventory_code_delete,
+  
+  get_inventory_critical_factor,
+  get_inventory_critical_select,
+  get_inventory_criticalfactor_insert,
+  get_inventory_criticalfactor_update,
+  get_inventory_criticalfactor_delete,
+  
+  get_inventory_status,
+  get_inventory_status_select,
+  get_inventory_status_type,
+  get_inventory_status_insert,
+  get_inventory_status_update,
+  get_inventory_status_delete,
+  
+  get_inventory_work_area,
+  get_inventory_workarea_select,
+  get_inventory_workarea_insert,
+  get_inventory_workarea_update,
+  get_inventory_workarea_delete,
+  
+  get_inventory_location,
+  get_inventory_location_select,
+  get_inventory_location_insert,
+  get_inventory_location_update,
+  get_inventory_location_delete,
+  
+  get_inventory_level,
+  get_inventory_level_select,
+  get_inventory_level_insert,
+  get_inventory_level_update,
+  get_inventory_level_delete,
+
 
 };
 
