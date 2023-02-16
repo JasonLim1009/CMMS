@@ -175,6 +175,16 @@ const InventoryFrom = (props) => {
     const [YTDStockouts, setYTDStockouts] = useState("");
 
     const [LastYearStockouts, setLastYearStockouts] = useState("");
+    
+
+    const [CostingRule, setCostingRule] = useState(false);
+    const [Radio_CostingRule, setRadio_CostingRule] = useState('');
+
+    const [Average, setAverage] = useState("0.0000");
+
+    const [Standard, setStandard] = useState("0.0000");
+
+    const [Last, setLast] = useState("0.0000");
 
     const [AutoNumring, setAutoNumring] = useState("");
 
@@ -482,7 +492,10 @@ const InventoryFrom = (props) => {
 
                 setSelected_AccountType( {label:responseJson.data.data[index].itm_det_acct_type} )
                 setSelected_TaxCode( {label:responseJson.data.data[index].itm_det_tax_cd} )
-
+                setCostingRule( responseJson.data.data[index].itm_det_cr_code )
+                setAverage( responseJson.data.data[index].itm_det_avg_cost )
+                setStandard( responseJson.data.data[index].itm_det_std_cost )
+                setLast( responseJson.data.data[index].itm_det_last_cost )
                 
 
               }
@@ -1010,6 +1023,10 @@ const InventoryFrom = (props) => {
 
         "itm_det_acct_type":setAccountType.trim(),
         "itm_det_tax_cd":setTaxCode.trim(),
+        "itm_det_cr_code":Radio_CostingRule,
+        "itm_det_std_cost":Average.trim(),
+        "itm_det_avg_cost":Standard.trim(),
+        "itm_det_last_cost":Last.trim(),
 
 
         "asset_type_ID":AutoNumring.trim(),
@@ -1410,6 +1427,10 @@ const InventoryFrom = (props) => {
 
         "itm_det_acct_type":setAccountType.trim(),
         "itm_det_tax_cd":setTaxCode.trim(),
+        "itm_det_cr_code":Radio_CostingRule,
+        "itm_det_std_cost":Average.trim(),
+        "itm_det_avg_cost":Standard.trim(),
+        "itm_det_last_cost":Last.trim(),
 
 
         "asset_type_ID":AutoNumring.trim(),
@@ -1522,10 +1543,10 @@ const InventoryFrom = (props) => {
         setAutoSpare(!AutoSpare);
         
         if(!AutoSpare){
-            console.log('V')
+            console.log('1')
             setCheckBox_AutoSpare('1')
         }else{
-            console.log('O')
+            console.log('0')
             setCheckBox_AutoSpare('0')
         }
       }
@@ -1534,10 +1555,10 @@ const InventoryFrom = (props) => {
         setCriticalSpare(!CriticalSpare);
 
         if(!CriticalSpare){
-            console.log('V')
+            console.log('1')
             setCheckBox_CriticalSpare('1')
         }else{
-            console.log('O')
+            console.log('0')
             setCheckBox_CriticalSpare('0')
         }
       }
@@ -1546,15 +1567,57 @@ const InventoryFrom = (props) => {
         setHazardousMaterial(!HazardousMaterial);
 
         if(!HazardousMaterial){
-            console.log('V')
+            console.log('1')
             setCheckBox_HazardousMaterial('1')
         }else{
-            console.log('O')
+            console.log('0')
             setCheckBox_HazardousMaterial('0')
         }
       }
 
-const [radio, setRadio] = useState();
+
+
+
+      const [radio, setRadio] = useState('');
+
+      const handleRadioChange = (e) => {
+        setRadio(e.target.value);
+        console.log('1')
+
+        if(e.target.value === 'Average') {
+            setCostingRule(true);
+            setRadio_CostingRule('Average');
+
+          } else if (e.target.value === 'Standard') {
+            setCostingRule(false);
+            setRadio_CostingRule('Standard');
+
+          } else if (e.target.value === 'Last') {
+            setCostingRule(false);
+            setRadio_CostingRule('Last');
+
+          } else if (e.target.value === 'FIFO') {
+            setCostingRule(false);
+            setRadio_CostingRule('FIFO');
+            
+          }
+          
+        }
+
+      const handleAverageChange = (e) => {
+        setAverage(e.target.value);
+      }
+
+      const handleStandardChange = (e) => {
+        setStandard(e.target.value);
+      }
+
+      const handleLastChange = (e) => {
+        setLast(e.target.value);
+      }
+
+      
+
 
   return (   
 
@@ -2594,118 +2657,341 @@ const [radio, setRadio] = useState();
 
                         </div>
 
+
+                        <hr></hr>
                         <div className="row">
-                            <div className="col-md-3">
-                                <Form.Group className="row" controlId="validation_Average">
-                                    <div className="col-sm-2 form-check">
-                                        <label className="form-check-label">
-                                            <input type="radio" 
-                                                name='radio'
-                                                value='Average'
-                                                onChange={e => setRadio(e.target.value)}
-                                            />
-                                            <i className="input-helper"></i>
-                                        </label>
-                                    </div>
-                                    <label className="col-sm-4 col-form-label">Average</label>
-                                </Form.Group>
-                            </div> 
-
-                            <div className="col-md-4">
-                                {radio === 'Average' && (
-                                    <Form.Group className="row" controlId="validation_Average1">
-                                        <div className="col-sm-4 form-check">
-                                            <Form.Control  type="number" value='0.0000' />
-                                        </div>
-                                    </Form.Group>
-                                )}
-                            </div> 
-                        </div>
-
-                        <div className="row">
-                            <div className="col-md-3">
-                                <Form.Group className="row" controlId="validation_Standard">
-                                    <div className="col-sm-2 form-check">
-                                        <label className="form-check-label">
-                                            <input type="radio" 
-                                                name='radio'
-                                                value='Standard'
-                                                onChange={e => setRadio(e.target.value)}
-                                            />
-                                            <i className="input-helper"></i>
-                                        </label>
-                                    </div>
-                                    <label className="col-sm-4 col-form-label">Standard</label>
-                                </Form.Group>
-                            </div> 
-
-                            <div className="col-md-4">
-                                {radio === 'Standard' && (
-                                    <Form.Group className="row" controlId="validation_Standard1">
-                                        <div className="col-sm-4 form-check">
-                                            <Form.Control  type="number" value='0.0000' />
-                                        </div>
-                                    </Form.Group>
-                                )}
-                            </div> 
-                        </div>
-
-                        <div className="row">
-                            <div className="col-md-3">
-                                <Form.Group className="row" controlId="validation_Last">
-                                    <div className="col-sm-2 form-check">
-                                        <label className="form-check-label">
-                                            <input type="radio" 
-                                                name='radio'
-                                                value='Last'
-                                                onChange={e => setRadio(e.target.value)}
-                                            />
-                                            <i className="input-helper"></i>
-                                        </label>
-                                    </div>
-                                    <label className="col-sm-4 col-form-label">Last</label>
-                                </Form.Group>
-                            </div> 
-
-                            <div className="col-md-4">
-                                {radio === 'Last' && (
-                                    <Form.Group className="row" controlId="validation_Last1">
-                                        <div className="col-sm-4 form-check">
-                                            <Form.Control  type="number" value='0.0000' />
-                                        </div>
-                                    </Form.Group>
-                                )}
-                            </div> 
-                        </div>
-
-                        <div className="row">
-                            <div className="col-md-3">
-                                <Form.Group className="row" controlId="validation_FIFO">
-                                    <div className="col-sm-1 form-check">
-                                        <label className="form-check-label">
-                                            <input type="radio" 
-                                                className="form-check-input"
-                                                name='radio'
-                                                value='FIFO'
-                                                onChange={e => setRadio(e.target.value)}
-                                                />
-                                                <i className="input-helper"></i>
-                                            </label>
-                                        </div>
-                                        <label className="col-sm-4 col-form-label">FIFO</label>
-                                    </Form.Group>
-                                </div> 
-                            
-                                <div className="col-md-4">
-                                    {radio === 'FIFO' && (
-                                        <Form.Group className="row" controlId="validation_FIFO1">
-                                            <div className="col-sm-4 form-check">
-                                                <Form.Control  type="number" value='0.0000' />
-                                            </div>
+                            <div className="col-md-12">
+                                <div className="row col-form-label">
+                                    <div className="col-md-2">
+                                        <Form.Group className="row" controlId="validation_Type">
+                                        <h6 className="col-sm-8">Costing Rule</h6>
                                         </Form.Group>
-                                    )}
+                                    </div>
+
+                                    <div className="col-md-5">
+                                        <Form.Group className="row" controlId="validation_Type">
+                                        <h6 className="col-sm-4">Item Cost (A)</h6>
+                                        <h6 className="col-sm-4">Total On-Hand (B)</h6>
+                                        <h6 className="col-sm-4">Total Repair Location (C)</h6>
+                                        </Form.Group>
+                                    </div>
+
+                                    <div className="col-md-5">
+                                        <Form.Group className="row" controlId="validation_Type">
+                                        <h6 className="col-sm-4">Value A * (B-C)</h6>
+                                        <h6 className="col-sm-4">Surcharge</h6>
+                                        <h6 className="col-sm-4">Surcharge Value</h6>
+                                        </Form.Group>
+                                    </div>
                                 </div> 
                             </div>
+                        </div>
+                        <hr className="mt-0"></hr>
+
+
+                        <div className="status-container">
+                            <div className="status-box">
+                                <Form.Group className="row">
+                                <fieldset className="p-3 w-100">
+
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="row">
+
+                                                <div className="col-md-2">
+                                                    <Form.Group className="row" controlId="validation_Average">
+                                                        <div className="col-sm-2 form-check">
+                                                            <label className="form-check-label">
+                                                                <input type="radio" 
+                                                                    name='radioAverage'
+                                                                    value='Average'
+                                                                    checked={radio === 'Average'}
+                                                                    onChange={handleRadioChange}
+                                                                />
+                                                                <i className="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                        <label className="col-sm-6 col-form-label">Average</label>
+                                                    </Form.Group>
+                                                </div> 
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_Average1">
+                                                        {radio === 'Average' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" placeholder="0.0000" value={Average} onChange={handleAverageChange} />
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Average' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Average' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_Average2">
+                                                        {radio === 'Average' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Average' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Average' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="row">
+
+                                                <div className="col-md-2">
+                                                    <Form.Group className="row" controlId="validation_Standard">
+                                                        <div className="col-sm-2 form-check">
+                                                            <label className="form-check-label">
+                                                                <input type="radio" 
+                                                                    name='radioStandard'
+                                                                    value='Standard'
+                                                                    checked={radio === 'Standard'}
+                                                                    onChange={handleRadioChange}
+                                                                />
+                                                                <i className="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                        <label className="col-sm-6 col-form-label">Standard</label>
+                                                    </Form.Group>
+                                                </div> 
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_Standard1">
+                                                        {radio === 'Standard' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" placeholder="0.0000" value={Standard} onChange={handleStandardChange} />
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Standard' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Standard' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_Standard2">
+                                                        {radio === 'Standard' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Standard' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Standard' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="row">
+
+                                                <div className="col-md-2">
+                                                    <Form.Group className="row" controlId="validation_Last">
+                                                        <div className="col-sm-2 form-check">
+                                                            <label className="form-check-label">
+                                                                <input type="radio" 
+                                                                    name='radioLast'
+                                                                    value='Last'
+                                                                    checked={radio === 'Last'}
+                                                                    onChange={handleRadioChange}
+                                                                />
+                                                                <i className="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                        <label className="col-sm-6 col-form-label">Last</label>
+                                                    </Form.Group>
+                                                </div> 
+
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_Last1">
+                                                        {radio === 'Last' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" placeholder="0.0000" value={Last} onChange={handleLastChange} />
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Last' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Last' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_Last2">
+                                                        {radio === 'Last' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Last' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'Last' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                            <div className="row">
+
+                                                <div className="col-md-2">
+                                                    <Form.Group className="row" controlId="validation_FIFO">
+                                                        <div className="col-sm-2 form-check">
+                                                            <label className="form-check-label">
+                                                                <input type="radio" 
+                                                                    name='radioFIFO'
+                                                                    value='FIFO'
+                                                                    checked={radio === 'FIFO'}
+                                                                    onChange={handleRadioChange}
+                                                                />
+                                                                <i className="input-helper"></i>
+                                                            </label>
+                                                        </div>
+                                                        <label className="col-sm-6 col-form-label">FIFO</label>
+                                                    </Form.Group>
+                                                </div> 
+
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_FIFO1">
+                                                        {radio === 'FIFO' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'FIFO' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'FIFO' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.0000' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+
+
+                                                <div className="col-md-5">
+                                                    <Form.Group className="row" controlId="validation_FIFO2">
+                                                        {radio === 'FIFO' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'FIFO' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0' readOnly/>
+                                                        </div>
+                                                        )}
+
+                                                        {radio === 'FIFO' && (
+                                                        <div className="col-sm-4 form-check">
+                                                            <Form.Control  type="number" value='0.00' readOnly/>
+                                                        </div>
+                                                        )}
+                                                    </Form.Group>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                </Form.Group>
+
+                            </div>
+                        </div>
 
                         </Tab>
 
