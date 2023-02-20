@@ -129,11 +129,6 @@ const InventoryFrom = (props) => {
 
     const [NextCountDate, setNextCountDate] = useState("");
 
-
-    const [columns, setcolumns]=useState([]);
-    const [data, setdata]=useState([]);
-
-
     const [UDFNote1, setUDFNote1] = useState("");
     const [UDFText_1, setUDFText_1] = useState("");
     const [UDFText_2, setUDFText_2] = useState("");
@@ -185,6 +180,17 @@ const InventoryFrom = (props) => {
     const [Standard, setStandard] = useState("0.0000");
 
     const [Last, setLast] = useState("0.0000");
+
+    const [PrimaryLocation, setPrimaryLocation] = useState(false);
+    const [CheckBox_PrimaryLocation, setCheckBox_PrimaryLocation] = useState('0');
+
+    const [StockLocation, setStockLocation] = useState("");
+
+    const [IncreaseTotalOH, setIncreaseTotalOH] = useState(false);
+    const [CheckBox_IncreaseTotalOH, setCheckBox_IncreaseTotalOH] = useState('0');
+
+    const [UpdateStockCosting, setUpdateStockCosting] = useState(false);
+    const [CheckBox_UpdateStockCosting, setCheckBox_UpdateStockCosting] = useState('0');
 
     const [AutoNumring, setAutoNumring] = useState("");
 
@@ -334,10 +340,12 @@ const InventoryFrom = (props) => {
                     Swal.close();
 
                     setButton_save("Save")
+                    setButton_submit("Submit")
 
                 }else{
 
                     setButton_save("Update")
+                    setButton_submit("Submit")
                     get_inventorymaster_select(site_ID, selected_asset);
                 }
               
@@ -496,7 +504,12 @@ const InventoryFrom = (props) => {
                 setAverage( responseJson.data.data[index].itm_det_avg_cost )
                 setStandard( responseJson.data.data[index].itm_det_std_cost )
                 setLast( responseJson.data.data[index].itm_det_last_cost )
-                
+
+                setPrimaryLocation( responseJson.data.data[index].itm_loc_prim_locn_flg )
+                setStockLocation( responseJson.data.data[index].itm_loc_stk_loc )
+                setIncreaseTotalOH( responseJson.data.data[index].itm_loc_inc_ttloh )
+                setUpdateStockCosting( responseJson.data.data[index].itm_loc_stock_cost_flag )
+
 
               }
 
@@ -1028,6 +1041,11 @@ const InventoryFrom = (props) => {
         "itm_det_avg_cost":Standard.trim(),
         "itm_det_last_cost":Last.trim(),
 
+        "itm_loc_prim_locn_flg":CheckBox_PrimaryLocation,
+        "itm_loc_stk_loc":StockLocation.trim(),
+        "itm_loc_inc_ttloh":CheckBox_IncreaseTotalOH,
+        "itm_loc_stock_cost_flag":CheckBox_UpdateStockCosting,
+
 
         "asset_type_ID":AutoNumring.trim(),
 
@@ -1432,6 +1450,11 @@ const InventoryFrom = (props) => {
         "itm_det_avg_cost":Standard.trim(),
         "itm_det_last_cost":Last.trim(),
 
+        "itm_loc_prim_locn_flg":CheckBox_PrimaryLocation,
+        "itm_loc_stk_loc":StockLocation.trim(),
+        "itm_loc_inc_ttloh":CheckBox_IncreaseTotalOH,
+        "itm_loc_stock_cost_flag":CheckBox_UpdateStockCosting,
+
 
         "asset_type_ID":AutoNumring.trim(),
 
@@ -1534,6 +1557,11 @@ const InventoryFrom = (props) => {
         // setSelected_AccountType(0);
         // setSelected_TaxCode(0);
 
+        // setPrimaryLocation('');
+        // setStockLocation('');
+        // setIncreaseTotalOH('');
+        // setUpdateStockCosting('');
+
         // setButton_save('Save');
     }
 
@@ -1572,6 +1600,42 @@ const InventoryFrom = (props) => {
         }else{
             console.log('0')
             setCheckBox_HazardousMaterial('0')
+        }
+      }
+
+      const handleOnChangePrimaryLocation = () => {
+        setPrimaryLocation(!PrimaryLocation);
+        
+        if(!PrimaryLocation){
+            console.log('1')
+            setCheckBox_PrimaryLocation('1')
+        }else{
+            console.log('0')
+            setCheckBox_PrimaryLocation('0')
+        }
+      }
+
+      const handleOnChangeIncreaseTotalOH = () => {
+        setIncreaseTotalOH(!IncreaseTotalOH);
+        
+        if(!IncreaseTotalOH){
+            console.log('1')
+            setCheckBox_IncreaseTotalOH('1')
+        }else{
+            console.log('0')
+            setCheckBox_IncreaseTotalOH('0')
+        }
+      }
+
+      const handleOnChangeUpdateStockCosting = () => {
+        setUpdateStockCosting(!UpdateStockCosting);
+        
+        if(!UpdateStockCosting){
+            console.log('1')
+            setCheckBox_UpdateStockCosting('1')
+        }else{
+            console.log('0')
+            setCheckBox_UpdateStockCosting('0')
         }
       }
 
@@ -1616,6 +1680,119 @@ const InventoryFrom = (props) => {
         setLast(e.target.value);
       }
 
+
+
+      const [columns, setcolumns] = useState([]);
+      const [data, setdata] = useState([]);
+      
+      const get_inventory_location = (site_ID) => {
+        APIServices.get_inventory_location(site_ID)
+          .then((responseJson) => {
+            console.log("Login JSON DATA : ", responseJson);
+    
+            if (responseJson.data.status === "SUCCESS") {
+
+                setcolumns(responseJson.data.data.header);
+                setdata(responseJson.data.data.result);
+         
+            } else {
+              Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: responseJson.data.message,
+              });
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+            Swal.fire({
+              icon: "error",
+              title: "Oops get_sitecode...",
+              text: e,
+            });
+          });
+      };
+
+      useEffect(() => {
+        let site_ID = localStorage.getItem("site_ID");
+        get_inventory_location(site_ID);
+      }, []);
+
+      const IndeterminateCheckbox = React.forwardRef(
+        ({ indeterminate, ...rest }, ref) => {
+          const defaultRef = React.useRef()
+          const resolvedRef = ref || defaultRef
+      
+          React.useEffect(() => {
+            resolvedRef.current.indeterminate = indeterminate
+          }, [resolvedRef, indeterminate])
+      
+          return (
+            <>
+              <input type="checkbox" ref={resolvedRef} {...rest} />
+            </>
+          )
+        }
+      )
+   
+      const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+        
+        selectedFlatRows,
+        resetResizing,        
+        state: { selectedRowIds },
+        
+    } = useTable({ columns, data },useSortBy, useRowSelect, useResizeColumns,
+
+        hooks => {
+            hooks.visibleColumns.push(columns => [
+              // Let's make a column for selection
+              {
+                id: 'selection',
+                // The header can use the table's getToggleAllRowsSelectedProps method
+                // to render a checkbox
+                Header: ({ getToggleAllRowsSelectedProps }) => (
+                  <div>
+                    <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+                  </div>
+                ),
+                // The cell can use the individual row's getToggleRowSelectedProps method
+                // to the render a checkbox
+                Cell: ({ row }) => (
+
+                  <div>                      
+                    <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+                  </div>
+
+                ),
+                
+              },
+              ...columns,
+            ])
+          }
+        )
+
+        const handleRowClick = (data) => {      
+            console.log(data)  
+            console.log(props.name) 
+            
+            // if(props.name == 'Asset_Type'){
+            //     console.log(data.col4)  
+            //     history.push("/MasterFileSelect" , {select :{Rowid:data.col4,ScreenName:"Asset_Type"}})
+            // }
+            
+        };
+
+
+
+      const [show, setShow] = useState(false);
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
+      const [Button_submit, setButton_submit] = useState("");
       
 
 
@@ -1647,6 +1824,83 @@ const InventoryFrom = (props) => {
         <div className="card">
             <div className="card-body"> 
             <form className="form-sample" validated={validated}>  
+
+
+
+                <div>
+                    <Modal show={show} onHide={handleClose} centered >
+
+                        <Modal.Header closeButton>
+                            <Modal.Title>Location</Modal.Title>
+                        </Modal.Header>
+
+                        <Modal.Body>
+                            
+                        <div className="col-md-12">
+                            <Form.Group className="row" controlId="validation_PrimaryLocation">
+                                <label className="col-sm-5 col-form-label">Primary Location:</label>
+                                <div className="col-sm-6 form-check">
+                                <label className="form-check-label">
+                                    <input type="checkbox" 
+                                    className="form-check-input"
+                                    checked={PrimaryLocation}
+                                    onChange={handleOnChangePrimaryLocation}
+                                    />
+                                    <i className="input-helper"></i>
+                                </label>
+                                </div>
+                            </Form.Group>
+
+                            <Form.Group className="row" controlId="validation_StockLocation">
+                                <label className="col-sm-5 col-form-label">Stock Location:</label>
+                                <div className="col-sm-6 form-check">
+                                <Form.Control  type="text" value={StockLocation} onChange={(e) => setStockLocation(e.target.value)}/>
+                                </div>
+                            </Form.Group>
+
+                            <Form.Group className="row" controlId="validation_IncreaseTotalOH">
+                                <label className="col-sm-5 col-form-label">Increase Total OH:</label>
+                                <div className="col-sm-6 form-check">
+                                <label className="form-check-label">
+                                    <input type="checkbox" 
+                                    className="form-check-input"
+                                    checked={IncreaseTotalOH}
+                                    onChange={handleOnChangeIncreaseTotalOH}
+                                    />
+                                    <i className="input-helper"></i>
+                                </label>
+                                </div>
+                            </Form.Group>
+
+                            <Form.Group className="row" controlId="validation_UpdateStockCosting">
+                                <label className="col-sm-5 col-form-label">Update Stock Costing:</label>
+                                <div className="col-sm-6 form-check">
+                                <label className="form-check-label">
+                                    <input type="checkbox" 
+                                    className="form-check-input"
+                                    checked={UpdateStockCosting}
+                                    onChange={handleOnChangeUpdateStockCosting}
+                                    />
+                                    <i className="input-helper"></i>
+                                </label>
+                                </div>
+                            </Form.Group>
+                            </div>
+                            
+                        </Modal.Body>
+
+                        <Modal.Footer>
+
+                        <Button variant="secondary" onClick={handleClose}>Close</Button>
+                        <Button variant="primary" onClick={handleClose}>{Button_submit}</Button>
+
+                        </Modal.Footer>
+
+                    </Modal>
+
+                </div> 
+
+
 
                 <div className="row">
 
@@ -2658,29 +2912,28 @@ const InventoryFrom = (props) => {
                         </div>
 
 
-                        <hr></hr>
                         <div className="row">
                             <div className="col-md-12">
                                 <div className="row col-form-label">
                                     <div className="col-md-2">
                                         <Form.Group className="row" controlId="validation_Type">
-                                        <h6 className="col-sm-8">Costing Rule</h6>
+                                        <th className="col-sm-8">Costing Rule</th>
                                         </Form.Group>
                                     </div>
 
                                     <div className="col-md-5">
                                         <Form.Group className="row" controlId="validation_Type">
-                                        <h6 className="col-sm-4">Item Cost (A)</h6>
-                                        <h6 className="col-sm-4">Total On-Hand (B)</h6>
-                                        <h6 className="col-sm-4">Total Repair Location (C)</h6>
+                                        <th className="col-sm-4">Item Cost (A)</th>
+                                        <th className="col-sm-4">Total On-Hand (B)</th>
+                                        <th className="col-sm-4">Total Repair Location (C)</th>
                                         </Form.Group>
                                     </div>
 
                                     <div className="col-md-5">
                                         <Form.Group className="row" controlId="validation_Type">
-                                        <h6 className="col-sm-4">Value A * (B-C)</h6>
-                                        <h6 className="col-sm-4">Surcharge</h6>
-                                        <h6 className="col-sm-4">Surcharge Value</h6>
+                                        <th className="col-sm-4">Value A * (B-C)</th>
+                                        <th className="col-sm-4">Surcharge</th>
+                                        <th className="col-sm-4">Surcharge Value</th>
                                         </Form.Group>
                                     </div>
                                 </div> 
@@ -2703,7 +2956,7 @@ const InventoryFrom = (props) => {
                                                         <div className="col-sm-2 form-check">
                                                             <label className="form-check-label">
                                                                 <input type="radio" 
-                                                                    name='radioAverage'
+                                                                    name='Average'
                                                                     value='Average'
                                                                     checked={radio === 'Average'}
                                                                     onChange={handleRadioChange}
@@ -2719,19 +2972,19 @@ const InventoryFrom = (props) => {
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_Average1">
                                                         {radio === 'Average' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" placeholder="0.0000" value={Average} onChange={handleAverageChange} />
                                                         </div>
                                                         )}
 
                                                         {radio === 'Average' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Average' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
@@ -2742,19 +2995,19 @@ const InventoryFrom = (props) => {
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_Average2">
                                                         {radio === 'Average' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Average' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Average' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
@@ -2775,7 +3028,7 @@ const InventoryFrom = (props) => {
                                                         <div className="col-sm-2 form-check">
                                                             <label className="form-check-label">
                                                                 <input type="radio" 
-                                                                    name='radioStandard'
+                                                                    name='Standard'
                                                                     value='Standard'
                                                                     checked={radio === 'Standard'}
                                                                     onChange={handleRadioChange}
@@ -2791,19 +3044,19 @@ const InventoryFrom = (props) => {
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_Standard1">
                                                         {radio === 'Standard' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" placeholder="0.0000" value={Standard} onChange={handleStandardChange} />
                                                         </div>
                                                         )}
 
                                                         {radio === 'Standard' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Standard' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
@@ -2814,19 +3067,19 @@ const InventoryFrom = (props) => {
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_Standard2">
                                                         {radio === 'Standard' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Standard' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Standard' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
@@ -2848,7 +3101,7 @@ const InventoryFrom = (props) => {
                                                         <div className="col-sm-2 form-check">
                                                             <label className="form-check-label">
                                                                 <input type="radio" 
-                                                                    name='radioLast'
+                                                                    name='Last'
                                                                     value='Last'
                                                                     checked={radio === 'Last'}
                                                                     onChange={handleRadioChange}
@@ -2861,23 +3114,22 @@ const InventoryFrom = (props) => {
                                                 </div> 
 
 
-
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_Last1">
                                                         {radio === 'Last' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" placeholder="0.0000" value={Last} onChange={handleLastChange} />
                                                         </div>
                                                         )}
 
                                                         {radio === 'Last' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Last' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
@@ -2885,23 +3137,22 @@ const InventoryFrom = (props) => {
                                                 </div>
 
 
-
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_Last2">
                                                         {radio === 'Last' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Last' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'Last' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
@@ -2923,7 +3174,7 @@ const InventoryFrom = (props) => {
                                                         <div className="col-sm-2 form-check">
                                                             <label className="form-check-label">
                                                                 <input type="radio" 
-                                                                    name='radioFIFO'
+                                                                    name='FIFO'
                                                                     value='FIFO'
                                                                     checked={radio === 'FIFO'}
                                                                     onChange={handleRadioChange}
@@ -2936,23 +3187,22 @@ const InventoryFrom = (props) => {
                                                 </div> 
 
 
-
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_FIFO1">
                                                         {radio === 'FIFO' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4 form-checkxxxxx">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'FIFO' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4 form-checkxxxxx">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'FIFO' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4 form-checkxxxxx">
                                                             <Form.Control  type="number" value='0.0000' readOnly/>
                                                         </div>
                                                         )}
@@ -2960,23 +3210,22 @@ const InventoryFrom = (props) => {
                                                 </div>
 
 
-
                                                 <div className="col-md-5">
                                                     <Form.Group className="row" controlId="validation_FIFO2">
                                                         {radio === 'FIFO' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4 form-checkxxxxx">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'FIFO' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4 form-checkxxxxx">
                                                             <Form.Control  type="number" value='0' readOnly/>
                                                         </div>
                                                         )}
 
                                                         {radio === 'FIFO' && (
-                                                        <div className="col-sm-4 form-check">
+                                                        <div className="col-sm-4 form-checkxxxxx">
                                                             <Form.Control  type="number" value='0.00' readOnly/>
                                                         </div>
                                                         )}
@@ -2998,29 +3247,160 @@ const InventoryFrom = (props) => {
 
                         {/* ************************************* Location ************************************ */}
 
-                        <Tab
-                            eventKey="Location"
-                            title="Location"
-                            class="nav-link active"
-                        ></Tab>
+                        <Tab eventKey="Location" title="Location" class="nav-link active">
+
+                        <div className="page-header">
+                            <div className="template-demo" >
+                                <button type="button" className="btn btn-outline-primary btn-icon-text"  onClick={handleShow}>
+                                    <i className="mdi mdi-file-check btn-icon-prepend"></i> New  
+                                </button>
+                            
+                                <button type="button" className="btn btn-outline-danger btn-icon-text"  >
+                                    <i className="mdi mdi-delete-forever btn-icon-prepend"></i> Delete 
+                                </button>
+                            </div>                     
+                        </div> 
+
+                        <div className="table-responsive">
+                            <table className="table table-hover table-bordered " {...getTableProps() } on >
+                                <thead>
+                                    {headerGroups.map(headerGroup => (
+                                        <tr {...headerGroup.getHeaderGroupProps()} className="tr">
+                                        
+                                            {headerGroup.headers.map(column => (                                    
+                                                <th
+                                                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                                                    
+                                                    style={{
+                                                        borderBottom: 'solid 3px red',
+                                                        color: 'black',
+                                                    }}
+
+                                                    {...column.getResizerProps()}
+                                                        className={`resizer ${
+                                                            column.isResizing ? 'isResizing' : ''
+                                                        }`}
+                                                >                            
+                                                    {column.render('Header')}
+
+                                                    <span>
+                                                        {column.isSorted
+                                                            ? column.isSortedDesc
+                                                                ? '🔽'
+                                                                : '🔼'
+                                                            : ''}
+                                                    </span>
+                                                </th>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                        
+                                </thead>
+                                <tbody {...getTableBodyProps() } >
+                                    {rows.map(row => {
+                                    prepareRow(row)
+                                    return (
+                                        <tr {...row.getRowProps()} onClick={() => handleRowClick(row.original)}>
+                                        {row.cells.map(cell => {
+                                            return (
+                                            <>
+                                            {/* Here added onClick function to get cell value */}
+                                            <td
+                                            // onClick={()=> getCellValue(cell)}
+                                            //     {...cell.getCellProps()}
+                                            //     style={{
+                                            //     padding: '10px',
+                                            //     border: 'solid 1px gray',
+                                            //     background: 'papayawhip',
+                                            //     }}
+                                            >
+                                                {cell.render('Cell')}
+                                            </td>
+                                            </>
+                                            )
+                                        })}
+                                        </tr>
+                                    )
+                                    })}                                
+                                </tbody>
+                            </table>
+                        </div>
+                        </Tab>
 
 
                         {/* ************************************* Supplier ************************************ */}
 
-                        <Tab
-                            eventKey="Supplier"
-                            title="Supplier"
-                            class="nav-link active"
-                        ></Tab>
+                        <Tab eventKey="Supplier" title="Supplier" class="nav-link active">
+                        <div className="table-responsive">
+                            <table
+                                className="table table-hover table-bordered"
+                                style={{ color: "#000", border: 1 }}
+                            >
+                                <thead
+                                style={{
+                                    color: "#000",
+                                    fontWeight: "bold",
+                                    fontFamily: "montserrat",
+                                    margin: "5px",
+                                }}
+                                >
+                                <tr>
+                                    <th></th>
+                                    <th>Rank</th>
+                                    <th>Supplier</th>
+                                    <th>Tax Code</th>
+                                    <th>Supplier Part No</th>
+                                    <th>Manufacturer</th>
+                                    <th>Last Quotation</th>
+                                    <th>Last Item Cost</th>
+                                    <th>Retail Price</th>
+                                    <th>Last Recieve Date</th>
+                                    <th>Order UOM</th>
+                                    <th>Minimum Order Qty</th>
+                                    <th>Multiplier Quantity</th>
+                                    <th>Discount %</th>
+                                    <th>Total Ordered Quantity</th>
+                                    <th>Total Received Quantity</th>
+                                    <th>Total Late Quantity</th>
+                                    <th>Total High Quantity</th>
+                                    <th>Delivery Index</th>
+                                    <th>Cost Index</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        </Tab>
 
 
                         {/* ************************************* Reference ************************************ */}
 
-                        <Tab
-                            eventKey="Reference"
-                            title="Reference"
-                            class="nav-link active"
-                        ></Tab>
+                        <Tab eventKey="Reference" title="Reference" class="nav-link active">
+                        <div className="table-responsive">
+                            <table
+                                className="table table-hover table-bordered"
+                                style={{ color: "#000", border: 1 }}
+                            >
+                                <thead
+                                style={{
+                                    color: "#000",
+                                    fontWeight: "bold",
+                                    fontFamily: "montserrat",
+                                    margin: "5px",
+                                }}
+                                >
+                                <tr>
+                                    <th></th>
+                                    <th>No</th>
+                                    <th>File Name</th>
+                                    <th>Audit User</th>
+                                    <th>Audit Date</th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        </Tab>
 
 
                     </Tabs>
