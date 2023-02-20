@@ -1503,7 +1503,7 @@ const get_purchasing_priority_delete = (site_cd, rowid) => {
 //WorkRequest  Master List
 const get_WorkRequestmaster = (site_cd, page, pageSize) => {
   return http.get(
-    `/get_workrequest_test.php?site_cd=${site_cd}&page=${page}&pageSize=${pageSize}`
+    `/get_workrequestmaster.php?site_cd=${site_cd}&page=${page}&pageSize=${pageSize}`
   );
 };
 
