@@ -1700,10 +1700,10 @@ const PersonnalFrom = (props) => {
         setMrApprover(!MrApprover);
 
         if(!WrApprover){
-            console.log('if')
+            console.log('1')
             setCheckBox_MrApprover('1')
         }else{
-            console.log('else_if')
+            console.log('0')
             setCheckBox_MrApprover('0')
         }
       }
@@ -1712,9 +1712,10 @@ const PersonnalFrom = (props) => {
         setWoSched(!WoSched);
 
         if(!WoSched){
-
+            console.log('1')
             setCheckBox_WoSched('1')
         }else{
+            console.log('0')
             setCheckBox_WoSched('0')
         }
       }
@@ -1723,10 +1724,10 @@ const PersonnalFrom = (props) => {
         setWoBudgetApprover(!WoBudgetApprover);
 
         if(!WrApprover){
-            console.log('if')
+            console.log('1')
             setCheckBox_WoBudgetApprover('1')
         }else{
-            console.log('else_if')
+            console.log('0')
             setCheckBox_WoBudgetApprover('0')
         }
       }
@@ -1735,9 +1736,10 @@ const PersonnalFrom = (props) => {
         setPoBuyer(!PoBuyer);
 
         if(!PoBuyer){
-
+            console.log('1')
             setCheckBox_PoBuyer('1')
         }else{
+            console.log('0')
             setCheckBox_PoBuyer('0')
         }
       }
@@ -1746,10 +1748,10 @@ const PersonnalFrom = (props) => {
         setPrApprover(!PrApprover);   
 
         if(!WrApprover){
-            console.log('if')
+            console.log('1')
             setCheckBox_PrApprover('1')
         }else{
-            console.log('else_if')
+            console.log('0')
             setCheckBox_PrApprover('0')
         }
       }
@@ -1758,9 +1760,10 @@ const PersonnalFrom = (props) => {
         setSupervisor(!Supervisor);
 
         if(!Supervisor){
-
+            console.log('1')
             setCheckBox_Supervisor('1')
         }else{
+            console.log('0')
             setCheckBox_Supervisor('0')
         }
       }
@@ -1769,11 +1772,10 @@ const PersonnalFrom = (props) => {
         setWrApprover(!WrApprover);  
         
         if(!WrApprover){
-
-            console.log('if')
+            console.log('1')
             setCheckBox_WrApprover('1')
         }else{
-            console.log('else_if')
+            console.log('0')
             setCheckBox_WrApprover('0')
         }
       }
@@ -1782,9 +1784,10 @@ const PersonnalFrom = (props) => {
         setForeman(!Foreman);
 
         if(!Foreman){
-
+            console.log('1')
             setCheckBox_Foreman('1')
         }else{
+            console.log('0')
             setCheckBox_Foreman('0')
         }
       }
@@ -1793,9 +1796,10 @@ const PersonnalFrom = (props) => {
         setPlanner(!Planner);
         
         if(!Planner){
-
+            console.log('1')
             setCheckBox_Planner('1')
         }else{
+            console.log('0')
             setCheckBox_Planner('0')
         }
       }
@@ -1804,9 +1808,10 @@ const PersonnalFrom = (props) => {
         setAssetTagFlag(!AssetTagFlag);
 
         if(!AssetTagFlag){
-
+            console.log('1')
             setCheckBox_AssetTagFlag('1')
         }else{
+            console.log('0')
             setCheckBox_AssetTagFlag('0')
         }
       }
@@ -1815,9 +1820,10 @@ const PersonnalFrom = (props) => {
         setWoGenMrPr(!WoGenMrPr);
 
         if(!WoGenMrPr){
-
+            console.log('1')
             setCheckBox_WoGenMrPr('1')
         }else{
+            console.log('0')
             setCheckBox_WoGenMrPr('0')
         }
       }
@@ -1826,9 +1832,10 @@ const PersonnalFrom = (props) => {
         setMsetupMobileUser(!MsetupMobileUser);
 
         if(!MsetupMobileUser){
-
+            console.log('1')
             setCheckBox_MsetupMobileUser('1')
         }else{
+            console.log('0')
             setCheckBox_MsetupMobileUser('0')
         }
       }
@@ -1837,9 +1844,10 @@ const PersonnalFrom = (props) => {
         setPmGenerator(!PmGenerator);
 
         if(!PmGenerator){
-
+            console.log('1')
             setCheckBox_PmGenerator('1')
         }else{
+            console.log('0')
             setCheckBox_PmGenerator('0')
         }
       }
@@ -1848,9 +1856,10 @@ const PersonnalFrom = (props) => {
         setTimeCardEnter(!TimeCardEnter);
 
         if(!TimeCardEnter){
-
+            console.log('1')
             setCheckBox_TimeCardEnter('1')
         }else{
+            console.log('0')
             setCheckBox_TimeCardEnter('0')
         }
       }
@@ -1859,9 +1868,10 @@ const PersonnalFrom = (props) => {
         setChecklist(!Checklist);
 
         if(!Checklist){
-
+            console.log('1')
             setCheckBox_Checklist('1')
         }else{
+            console.log('0')
             setCheckBox_Checklist('0')
         }
       }
@@ -1870,9 +1880,10 @@ const PersonnalFrom = (props) => {
         setTimeCardVoid(!TimeCardVoid);
 
         if(!TimeCardVoid){
-
+            console.log('1')
             setCheckBox_TimeCardVoid('1')
         }else{
+            console.log('0')
             setCheckBox_TimeCardVoid('0')
         }
       }
@@ -1881,9 +1892,10 @@ const PersonnalFrom = (props) => {
         setMobile(!Mobile);
 
         if(!Mobile){
-
+            console.log('1')
             setCheckBox_Mobile('1')
         }else{
+            console.log('0')
             setCheckBox_Mobile('0')
         }
       }
@@ -1892,9 +1904,10 @@ const PersonnalFrom = (props) => {
         setCore(!Core);
 
         if(!Core){
-
+            console.log('1')
             setCheckBox_Core('1')
         }else{
+            console.log('0')
             setCheckBox_Core('0')
         }
       } 
@@ -1903,9 +1916,10 @@ const PersonnalFrom = (props) => {
         setWebwork(!Webwork);
 
         if(!Webwork){
-
+            console.log('1')
             setCheckBox_Webwork('1')
         }else{
+            console.log('0')
             setCheckBox_Webwork('0')
         }
       }
@@ -2283,7 +2297,8 @@ const PersonnalFrom = (props) => {
 
                                         <div className="col-md-6">
                                             <Form.Group className="row">
-                                                <label className="col-sm-9 col-form-label">Supervisor Name:</label>
+                                                <label className="col-sm-3 col-form-label">Supervisor Name:</label>
+                                                <div className="col-sm-9"></div>
                                             </Form.Group>
                                         </div> 
                                             
@@ -2562,9 +2577,9 @@ const PersonnalFrom = (props) => {
 
                                 <div className="col-md-3"></div> 
 
-                                <div className="col-md-6">
+                                <div className="col-md-3">
                                     <Form.Group className="row">
-                                        <label className="col-sm-5 col-form-label">Mobile User:</label>
+                                        <label className="col-sm-10 col-form-label">Mobile User:</label>
                                         <div className="col-sm-2 form-check">
                                             <label className="form-check-label">
                                                 <input type="checkbox" 
@@ -2599,9 +2614,10 @@ const PersonnalFrom = (props) => {
 
                                 <div className="col-md-3"></div> 
 
-                                <div className="col-md-6">
+                                <div className="col-md-3">
                                     <Form.Group className="row">
-                                        <label className="col-sm-9 col-form-label">Mobile Device ID:</label>
+                                        <label className="col-sm-10 col-form-label">Mobile Device ID:</label>
+                                        <div className="col-sm-2 form-check"></div>
                                     </Form.Group>
                                 </div>   
 
@@ -2700,9 +2716,9 @@ const PersonnalFrom = (props) => {
 
                                 <div className="col-md-3"></div> 
 
-                                <div className="col-md-6">
+                                <div className="col-md-3">
                                     <Form.Group className="row">
-                                        <label className="col-sm-5 col-form-label">Webwork Access:</label>
+                                        <label className="col-sm-10 col-form-label">Webwork Access:</label>
                                         <div className="col-sm-2 form-check">
                                             <label className="form-check-label">
                                                 <input type="checkbox" 
@@ -3617,11 +3633,33 @@ const PersonnalFrom = (props) => {
 
                         {/* ************************************* Maintenance ************************************ */}
 
-                        <Tab
-                            eventKey="Maintenance"
-                            title="Maintenance"
-                            class="nav-link active"
-                        ></Tab>
+                        <Tab eventKey="Maintenance" title="Maintenance" class="nav-link active">
+                            <div className="table-responsive">
+                                <table
+                                    className="table table-hover table-bordered"
+                                    style={{ color: "#000", border: 1 }}
+                                >
+                                    <thead
+                                    style={{
+                                        color: "#000",
+                                        fontWeight: "bold",
+                                        fontFamily: "montserrat",
+                                        margin: "5px",
+                                    }}
+                                    >
+
+                                    <tr>
+                                        <th></th>
+                                        <th>Craft</th>
+                                        <th>Supervisor ID</th>
+                                        <th>Pay Rate</th>
+                                        <th>Charge Rate</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </Tab>
 
 
                         {/* ************************************* PR Approval ************************************ */}
