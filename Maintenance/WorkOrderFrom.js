@@ -2129,10 +2129,10 @@ const WorkOrderFrom = (props) => {
         setTemporary_Asset(!Temporary_Asset);
         
         if(!Temporary_Asset){
-            console.log('click')
+            console.log('1')
             setCheckBox_Temporary_Asset('1')
         }else{
-            console.log('unclick')
+            console.log('0')
             setCheckBox_Temporary_Asset('0')
         }
       }
@@ -2141,10 +2141,10 @@ const WorkOrderFrom = (props) => {
         setApproved(!Approved);
 
         if(!Approved){
-            console.log('click')
+            console.log('1')
             setCheckBox_Approved('1')
         }else{
-            console.log('unclick')
+            console.log('0')
             setCheckBox_Approved('0')
         }
       }
@@ -2153,10 +2153,10 @@ const WorkOrderFrom = (props) => {
         setSafety(!Safety);
 
         if(!Safety){
-            console.log('click')
+            console.log('1')
             setCheckBox_Safety('1')
         }else{
-            console.log('unclick')
+            console.log('0')
             setCheckBox_Safety('0')
         }
       }
@@ -2763,7 +2763,8 @@ const WorkOrderFrom = (props) => {
 
                                         <div className="col-md-6">
                                             <Form.Group className="row">
-                                                <label className="col-sm-9 col-form-label">WO Print:</label>
+                                                <label className="col-sm-3 col-form-label">WO Print:</label>
+                                                <div className="col-sm-7"></div>
                                             </Form.Group>
                                         </div> 
                                             
@@ -2913,7 +2914,8 @@ const WorkOrderFrom = (props) => {
 
                                         <div className="col-md-6">
                                             <Form.Group className="row">
-                                                <label className="col-sm-9 col-form-label">Parent WO:</label>
+                                                <label className="col-sm-3 col-form-label">Parent WO:</label>
+                                                <div className="col-sm-7"></div>
                                             </Form.Group>
                                         </div> 
 
@@ -2922,26 +2924,29 @@ const WorkOrderFrom = (props) => {
                                     <div className="row">
                                         <div className="col-md-6">
                                                 <Form.Group className="row">
-                                                    <label className="col-sm-9 col-form-label">Work Request No:</label>
+                                                    <label className="col-sm-4 col-form-label">Work Request No:</label>
+                                                    <div className="col-sm-7"></div>
                                                 </Form.Group>
                                             </div> 
 
                                             <div className="col-md-6">
                                                 <Form.Group className="row">
-                                                    <label className="col-sm-9 col-form-label">WR Origination Date:</label>
+                                                    <label className="col-sm-3 col-form-label">WR Origination Date:</label>
+                                                    <div className="col-sm-7"></div>
                                                 </Form.Group>
                                             </div> 
 
                                         </div> 
 
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                <Form.Group className="row">
-                                                    <label className="col-sm-9 col-form-label">WR Due Date:</label>
-                                                </Form.Group>
-                                            </div> 
-
+                                    <div className="row">
+                                        <div className="col-md-6">
+                                            <Form.Group className="row">
+                                                <label className="col-sm-4 col-form-label">WR Due Date:</label>
+                                                <div className="col-sm-7"></div>
+                                            </Form.Group>
                                         </div> 
+
+                                    </div> 
                 
                         </Tab>
 
@@ -3513,11 +3518,47 @@ const WorkOrderFrom = (props) => {
 
                         {/* ************************************* Material ************************************ */}
 
-                        <Tab
-                            eventKey="Material"
-                            title="Material"
-                            class="nav-link active"
-                        ></Tab>
+                        <Tab eventKey="Material" title="Material" class="nav-link active">
+                            <div className="table-responsive">
+                                <table
+                                    className="table table-hover table-bordered"
+                                    style={{ color: "#000", border: 1 }}
+                                >
+                                    <thead
+                                    style={{
+                                        color: "#000",
+                                        fontWeight: "bold",
+                                        fontFamily: "montserrat",
+                                        margin: "5px",
+                                    }}
+                                    >
+
+                                    <tr>
+                                        <th></th>
+                                        <th>Asset No</th>
+                                        <th>Stock No</th>
+                                        <th>Stock Location</th>
+                                        <th>Description</th>
+                                        <th>Charge Cost Center</th>
+                                        <th>Charge Account</th>
+                                        <th>Qty Needed</th>
+                                        <th>UOM</th>
+                                        <th>Item Cost</th>
+                                        <th>Extended Cost</th>
+                                        <th>Material Request No</th>
+                                        <th>MR Line No</th>
+                                        <th>MR Approval Status</th>
+                                        <th>Stock Status</th>
+                                        <th>Issue Status</th>
+                                        <th>Actual Quantity</th>
+                                        <th>Contarct PO No</th>
+                                        <th>Contract PO Line</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </Tab>
 
 
                         {/* ************************************* Special Order (PR) ************************************ */}
