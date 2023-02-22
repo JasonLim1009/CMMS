@@ -995,7 +995,7 @@ const PersonnalFrom = (props) => {
         "emp_mst_status":Employee_Status[0].trim(),
         "emp_mst_title":Emp_Title.trim(),
         "emp_mst_usr_grp":Employee_User_Group[0].trim(),
-        "emp_mst_login":Employee_Login_Id,
+        "emp_mst_login_id":Employee_Login_Id,
         "emp_mst_dash_access":setDashboard_access.trim(),
 
         "emp_mst_homephone":Emp_HomePhone.trim(),
@@ -1449,7 +1449,7 @@ const PersonnalFrom = (props) => {
         "emp_mst_status":Employee_Status[0].trim(),
         "emp_mst_title":Emp_Title,
         "emp_mst_usr_grp":Employee_User_Group[0].trim(),
-        "emp_mst_login":setEmployee_Login_Id.trim(),
+        "emp_mst_login_id":setEmployee_Login_Id.trim(),
         "emp_mst_dash_access":setDashboard_access.trim(),
 
         "emp_mst_homephone":Emp_HomePhone,
@@ -1596,101 +1596,101 @@ const PersonnalFrom = (props) => {
 
   const resetData = () => {
     
-    setEmp_EmployeeID('');
-    setEmp_Name('');
-    setSelected_Employee_Status(0);
-    setEmp_Title('');
-    setSelected_Employee_User_Group(0);
-    setSelected_Employee_Login_Id(0);
-    setSelected_dashboard_access(0);
+    // setEmp_EmployeeID('');
+    // setEmp_Name('');
+    // setSelected_Employee_Status(0);
+    // setEmp_Title('');
+    // setSelected_Employee_User_Group(0);
+    // setSelected_Employee_Login_Id(0);
+    // setSelected_dashboard_access(0);
 
-    setEmp_HomePhone('');
-    setBirthDate('');
-    setEmp_EmergencyName('');
-    setHireDate('');
-    setEmp_EmergencyPhone('');
-    setEmp_PayRate('');
-    setSelected_sex(0);
-    setEmp_PayPeriod('');
-    setSelected_marital_status(0);
-    setSelected_shift(0);
-    setEmp_EmailID('');
-    setSelected_Employee_Supervisor_Id(0);
-    setSelected_Employee_Primary_Craft(0);
-    setSelected_Employee_Work_Id(0);
-    setSelected_Employee_Work_Group(0);
-    setRemarks('');
+    // setEmp_HomePhone('');
+    // setBirthDate('');
+    // setEmp_EmergencyName('');
+    // setHireDate('');
+    // setEmp_EmergencyPhone('');
+    // setEmp_PayRate('');
+    // setSelected_sex(0);
+    // setEmp_PayPeriod('');
+    // setSelected_marital_status(0);
+    // setSelected_shift(0);
+    // setEmp_EmailID('');
+    // setSelected_Employee_Supervisor_Id(0);
+    // setSelected_Employee_Primary_Craft(0);
+    // setSelected_Employee_Work_Id(0);
+    // setSelected_Employee_Work_Group(0);
+    // setRemarks('');
 
-    setCheckBox_MrApprover('');
-    setMrApprover('');
-    setCheckBox_WoSched('');
-    setCheckBox_WoBudgetApprover('');
-    setWoBudgetApprover('');
-    setCheckBox_PoBuyer('');
-    setCheckBox_PrApprover('');
-    setPrApprover('');
-    setCheckBox_Supervisor('');
-    setCheckBox_WrApprover('');
-    setCheckBox_Foreman('');
-    setCheckBox_Planner('');
-    setCheckBox_AssetTagFlag('');
-    setCheckBox_WoGenMrPr('');
-    setCheckBox_MsetupMobileUser('');
-    setCheckBox_PmGenerator('');
-    setCheckBox_TimeCardEnter('');
-    setCheckBox_Checklist('');
-    setCheckBox_TimeCardVoid('');
-    setCheckBox_Mobile('');
-    setCheckBox_Core('');
-    setCheckBox_Webwork('');
+    // setCheckBox_MrApprover('');
+    // setMrApprover('');
+    // setCheckBox_WoSched('');
+    // setCheckBox_WoBudgetApprover('');
+    // setWoBudgetApprover('');
+    // setCheckBox_PoBuyer('');
+    // setCheckBox_PrApprover('');
+    // setPrApprover('');
+    // setCheckBox_Supervisor('');
+    // setCheckBox_WrApprover('');
+    // setCheckBox_Foreman('');
+    // setCheckBox_Planner('');
+    // setCheckBox_AssetTagFlag('');
+    // setCheckBox_WoGenMrPr('');
+    // setCheckBox_MsetupMobileUser('');
+    // setCheckBox_PmGenerator('');
+    // setCheckBox_TimeCardEnter('');
+    // setCheckBox_Checklist('');
+    // setCheckBox_TimeCardVoid('');
+    // setCheckBox_Mobile('');
+    // setCheckBox_Core('');
+    // setCheckBox_Webwork('');
 
-    setUDFNote1('');
-    setUDFText_1('');
-    setUDFText_2('');
-    setUDFText_3('');
-    setUDFText_4('');
-    setUDFText_5('');
-    setUDFText_6('');
-    setUDFText_7('');
-    setUDFText_8('');
-    setUDFText_9('');
-    setUDFText_10('');
+    // setUDFNote1('');
+    // setUDFText_1('');
+    // setUDFText_2('');
+    // setUDFText_3('');
+    // setUDFText_4('');
+    // setUDFText_5('');
+    // setUDFText_6('');
+    // setUDFText_7('');
+    // setUDFText_8('');
+    // setUDFText_9('');
+    // setUDFText_10('');
 
-    setUDFNote2('');
-    setUDFText_11('');
-    setUDFText_12('');
-    setUDFText_13('');
-    setUDFText_14('');
-    setUDFText_15('');
-    setUDFText_16('');
-    setUDFText_17('');
-    setUDFText_18('');
-    setUDFText_19('');
-    setUDFText_20('');
+    // setUDFNote2('');
+    // setUDFText_11('');
+    // setUDFText_12('');
+    // setUDFText_13('');
+    // setUDFText_14('');
+    // setUDFText_15('');
+    // setUDFText_16('');
+    // setUDFText_17('');
+    // setUDFText_18('');
+    // setUDFText_19('');
+    // setUDFText_20('');
 
-    setUDFNumber_1('');
-    setUDFNumber_2('');
-    setUDFNumber_3('');
-    setUDFNumber_4('');
-    setUDFNumber_5('');
-    setUDFNumber_6('');
-    setUDFNumber_7('');
-    setUDFNumber_8('');
-    setUDFNumber_9('');
-    setUDFNumber_10('');
+    // setUDFNumber_1('');
+    // setUDFNumber_2('');
+    // setUDFNumber_3('');
+    // setUDFNumber_4('');
+    // setUDFNumber_5('');
+    // setUDFNumber_6('');
+    // setUDFNumber_7('');
+    // setUDFNumber_8('');
+    // setUDFNumber_9('');
+    // setUDFNumber_10('');
 
-    setUDFDate_1('');
-    setUDFDate_2('');
-    setUDFDate_3('');
-    setUDFDate_4('');
-    setUDFDate_5('');
-    setUDFDate_6('');
-    setUDFDate_7('');
-    setUDFDate_8('');
-    setUDFDate_9('');
-    setUDFDate_10('');
+    // setUDFDate_1('');
+    // setUDFDate_2('');
+    // setUDFDate_3('');
+    // setUDFDate_4('');
+    // setUDFDate_5('');
+    // setUDFDate_6('');
+    // setUDFDate_7('');
+    // setUDFDate_8('');
+    // setUDFDate_9('');
+    // setUDFDate_10('');
     
-    setButton_save('Save');
+    // setButton_save('Save');
     
   }
 
@@ -2838,110 +2838,6 @@ const PersonnalFrom = (props) => {
 
                             </div>
 
-
-
-                        {/* <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    EPS ID:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_1}
-                                    onChange={(e) => setUDFText_1(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Note1:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                        type="text"  
-                                        value={UDFNote1} 
-                                        onChange={(e) => setUDFNote1(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar2:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_2}
-                                    onChange={(e) => setUDFText_2(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar3:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_3}
-                                    onChange={(e) => setUDFText_3(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar4:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_4}
-                                    onChange={(e) => setUDFText_4(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar5:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_5}
-                                    onChange={(e) => setUDFText_5(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div> */}
-
-
-
                             <div className="row">
                             <div className="col-md-4">
                                 <Form.Group className="row">
@@ -3287,108 +3183,6 @@ const PersonnalFrom = (props) => {
 
                             </div>
 
-
-
-                            {/* <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar11:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_11}
-                                    onChange={(e) => setUDFText_11(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Note2:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFNote2}
-                                    onChange={(e) => setUDFNote2(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar12:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_12}
-                                    onChange={(e) => setUDFText_12(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar13:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_13}
-                                    onChange={(e) => setUDFText_13(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar14:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_14}
-                                    onChange={(e) => setUDFText_14(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div>
-
-                            <div className="row">
-                            <div className="col-md-4">
-                                <Form.Group className="row">
-                                <label className="col-sm-3 col-form-label">
-                                    Varchar15:
-                                </label>
-                                <div className="col-sm-9">
-                                    <Form.Control
-                                    type="text"
-                                    value={UDFText_15}
-                                    onChange={(e) => setUDFText_15(e.target.value)}
-                                        />
-                                </div>
-                                </Form.Group>
-                            </div>
-                            </div> */}
-
                             <div className="row">
                             <div className="col-md-4">
                                 <Form.Group className="row">
@@ -3634,6 +3428,19 @@ const PersonnalFrom = (props) => {
                         {/* ************************************* Maintenance ************************************ */}
 
                         <Tab eventKey="Maintenance" title="Maintenance" class="nav-link active">
+
+                            <div className="page-header">
+                                <div className="template-demo" >
+                                    <button type="button" className="btn btn-outline-primary btn-icon-text"  onClick>
+                                        <i className="mdi mdi-file-check btn-icon-prepend"></i> New  
+                                    </button>
+                                
+                                    <button type="button" className="btn btn-outline-danger btn-icon-text"  >
+                                        <i className="mdi mdi-delete-forever btn-icon-prepend"></i> Delete 
+                                    </button>
+                                </div>                     
+                            </div> 
+
                             <div className="table-responsive">
                                 <table
                                     className="table table-hover table-bordered"
@@ -3695,10 +3502,21 @@ const PersonnalFrom = (props) => {
                             eventKey="Reference"
                             title="Reference"
                             class="nav-link active"
-                        ></Tab>
-                        </Tabs>
-                    </section>
-                    </form>
+                        >
+                            <Form.Group>
+                                <label>File upload</label>
+                                <div className="custom-file">
+                                    <Form.Control type="file" className="form-control visibility-hidden" id="customFileLang" lang="es"/>
+                                    <label className="custom-file-label" htmlFor="customFileLang">Upload image</label>
+                                </div>
+                            </Form.Group> 
+                        </Tab>
+
+                    </Tabs>
+                    
+                </section>
+
+            </form>
 
 
                         {/* ************************************* button ***************************************** */}
