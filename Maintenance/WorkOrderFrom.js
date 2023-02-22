@@ -581,7 +581,7 @@ const WorkOrderFrom = (props) => {
                 }else{
 
                     setCompletionDate( Moment(responseJson.data.data[index].wko_det_cmpl_date.date).format('YYYY-MM-DDTHH:mm:ss').trim())
-                    console.log('SELECT SD: '+ Moment(responseJson.data.data[index].wko_det_cmpl_date.date).format('YYYY-MM-DDTHH:mm:ss'))
+                    console.log('SELECT CD: '+ Moment(responseJson.data.data[index].wko_det_cmpl_date.date).format('YYYY-MM-DDTHH:mm:ss'))
                 }
 
                 setSelected_Work_Class( {label:responseJson.data.data[index].wko_det_work_class} )
@@ -651,8 +651,8 @@ const WorkOrderFrom = (props) => {
                     setUDFDate_3('')
                 }else{
 
-                    setUDFDate_3( Moment(responseJson.data.data[index].emp_det_datetime3.date).format('YYYY-MM-DDTHH:mm:ss').trim())
-                    console.log('SELECT Date 3 : '+ Moment(responseJson.data.data[index].emp_det_datetime3.date).format('YYYY-MM-DDTHH:mm:ss'))
+                    setUDFDate_3( Moment(responseJson.data.data[index].wko_det_datetime3.date).format('YYYY-MM-DDTHH:mm:ss').trim())
+                    console.log('SELECT Date 3 : '+ Moment(responseJson.data.data[index].wko_det_datetime3.date).format('YYYY-MM-DDTHH:mm:ss'))
                 }
 
                 if(responseJson.data.data[index].wko_det_datetime4 == null){
@@ -3519,6 +3519,19 @@ const WorkOrderFrom = (props) => {
                         {/* ************************************* Material ************************************ */}
 
                         <Tab eventKey="Material" title="Material" class="nav-link active">
+
+                            <div className="page-header">
+                                <div className="template-demo" >
+                                    <button type="button" className="btn btn-outline-primary btn-icon-text"  onClick>
+                                        <i className="mdi mdi-file-check btn-icon-prepend"></i> New  
+                                    </button>
+                                
+                                    <button type="button" className="btn btn-outline-danger btn-icon-text"  >
+                                        <i className="mdi mdi-delete-forever btn-icon-prepend"></i> Delete 
+                                    </button>
+                                </div>                     
+                            </div> 
+
                             <div className="table-responsive">
                                 <table
                                     className="table table-hover table-bordered"
@@ -3567,7 +3580,21 @@ const WorkOrderFrom = (props) => {
                             eventKey="Special Order (PR)"
                             title="Special Order (PR)"
                             class="nav-link active"
-                        ></Tab>
+                        >
+
+                            <div className="page-header">
+                                <div className="template-demo" >
+                                    <button type="button" className="btn btn-outline-primary btn-icon-text"  onClick>
+                                        <i className="mdi mdi-file-check btn-icon-prepend"></i> New  
+                                    </button>
+                                
+                                    <button type="button" className="btn btn-outline-danger btn-icon-text"  >
+                                        <i className="mdi mdi-delete-forever btn-icon-prepend"></i> Delete 
+                                    </button>
+                                </div>                     
+                            </div> 
+
+                        </Tab>
 
 
                         {/* ************************************* Outsource Contract (PR) ************************************ */}
@@ -3576,7 +3603,21 @@ const WorkOrderFrom = (props) => {
                             eventKey="Outsource Contract (PR)"
                             title="Outsource Contract (PR)"
                             class="nav-link active"
-                        ></Tab>
+                        >
+
+                            <div className="page-header">
+                                <div className="template-demo" >
+                                    <button type="button" className="btn btn-outline-primary btn-icon-text"  onClick>
+                                        <i className="mdi mdi-file-check btn-icon-prepend"></i> New  
+                                    </button>
+                                
+                                    <button type="button" className="btn btn-outline-danger btn-icon-text"  >
+                                        <i className="mdi mdi-delete-forever btn-icon-prepend"></i> Delete 
+                                    </button>
+                                </div>                     
+                            </div> 
+
+                        </Tab>
 
 
                         {/* ************************************* Time Card ********************************* */}
@@ -3585,7 +3626,21 @@ const WorkOrderFrom = (props) => {
                             eventKey="Time Card"
                             title="Time Card"
                             class="nav-link active"
-                        ></Tab>
+                        >
+
+                            <div className="page-header">
+                                <div className="template-demo" >
+                                    <button type="button" className="btn btn-outline-primary btn-icon-text"  onClick>
+                                        <i className="mdi mdi-file-check btn-icon-prepend"></i> New  
+                                    </button>
+                                
+                                    <button type="button" className="btn btn-outline-danger btn-icon-text"  >
+                                        <i className="mdi mdi-delete-forever btn-icon-prepend"></i> Void 
+                                    </button>
+                                </div>                     
+                            </div> 
+
+                        </Tab>
 
 
                         {/* ************************************* Misc ************************************** */}
@@ -3594,7 +3649,21 @@ const WorkOrderFrom = (props) => {
                             eventKey="Misc"
                             title="Misc"
                             class="nav-link active"
-                        ></Tab>
+                        >
+
+                            <div className="page-header">
+                                <div className="template-demo" >
+                                    <button type="button" className="btn btn-outline-primary btn-icon-text"  onClick>
+                                        <i className="mdi mdi-file-check btn-icon-prepend"></i> New  
+                                    </button>
+                                
+                                    <button type="button" className="btn btn-outline-danger btn-icon-text"  >
+                                        <i className="mdi mdi-delete-forever btn-icon-prepend"></i> Delete 
+                                    </button>
+                                </div>                     
+                            </div> 
+
+                        </Tab>
 
                         {/* ************************************* Reference ************************************** */}
 
@@ -3602,7 +3671,15 @@ const WorkOrderFrom = (props) => {
                             eventKey="Reference"
                             title="Reference"
                             class="nav-link active"
-                        ></Tab>
+                        >
+                            <Form.Group>
+                                <label>File upload</label>
+                                <div className="custom-file">
+                                    <Form.Control type="file" className="form-control visibility-hidden" id="customFileLang" lang="es"/>
+                                    <label className="custom-file-label" htmlFor="customFileLang">Upload image</label>
+                                </div>
+                            </Form.Group> 
+                        </Tab>
                         
 
                         {/* ************************************* Status Audit ************************************** */}
