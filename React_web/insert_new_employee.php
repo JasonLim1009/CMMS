@@ -29,7 +29,7 @@ $emp_mst_name = $data['emp_mst_name'];
 $emp_mst_status = $data['emp_mst_status'];
 $emp_mst_title = $data['emp_mst_title'];
 $emp_mst_usr_grp = $data['emp_mst_usr_grp'];
-$emp_mst_login = $data['emp_mst_login'];
+$emp_mst_login_id = $data['emp_mst_login_id'];
 $emp_mst_dash_access = $data['emp_mst_dash_access'];
 
 $emp_mst_homephone = $data['emp_mst_homephone'];
@@ -129,24 +129,31 @@ $ast_aud_originator = $data['ast_aud_originator'];
 $emp_mst_create_date = $data['emp_mst_create_date'];
 
 //STEP-01
-$sql_insert_emp_mst = "INSERT INTO emp_mst 
-								(	site_cd,				emp_mst_empl_id,		emp_mst_login_id,			emp_mst_usr_grp,		emp_mst_name,				emp_mst_title, 
-									emp_mst_status,			emp_mst_homephone,		emp_mst_emg_name,			emp_mst_emg_phone,		emp_mst_dateofhire,			emp_mst_sex, 
-									emp_mst_date_of_birth,	emp_mst_marital_status, emp_mst_payrate,			emp_mst_pay_period,		emp_mst_remarks,			emp_mst_privilege_template, 
-									emp_mst_dash_access,	emp_mst_create_by,		emp_mst_create_date,		audit_user,				audit_date,					column1, 
-									column2,				column3,				column4,					column5 ) 
+$sql_insert_emp_mst = "	INSERT INTO emp_mst ( 
+									site_cd,				emp_mst_empl_id,				emp_mst_login_id,			emp_mst_usr_grp, 
+									emp_mst_name,			emp_mst_title,					emp_mst_status,				emp_mst_homephone, 
+									emp_mst_emg_name,		emp_mst_emg_phone,				emp_mst_dateofhire,			emp_mst_sex, 
+									emp_mst_date_of_birth,	emp_mst_marital_status,			emp_mst_payrate,			emp_mst_pay_period, 
+									emp_mst_remarks,		emp_mst_privilege_template,		emp_mst_dash_access,		emp_mst_create_by, 
+									emp_mst_create_date,	audit_user,						audit_date,					column1, 
+									column2,				column3,						column4,					column5 ) 
 
-						VALUES (	?,						?,						NULL,						?,						?,								?,
-									?,						?,						?,							?,						?,								?,
-									?,						?,						?,							?,						?,								NULL,
-									?,						?,						?,							?,						GetDate(),						NULL,
-									NULL,					NULL,					NULL,						NULL)";
+						VALUES (	?,						?,								NULL,						?,
+									?,						?,								?,							?,
+									?,						?,								NULL,						?,
+									NULL,					?,								?,							?,
+									?,						NULL,							?,							?,
+									?, 						?,								GetDate(),					NULL,
+									NULL,					NULL,							NULL,						NULL )";
 								
 								
-$params_emp_mst = array(	$site_cd,					$emp_mst_empl_id,										$emp_mst_usr_grp,		$emp_mst_name,				$emp_mst_title,		
-							$emp_mst_status,			$emp_mst_homephone,			$emp_mst_emg_name,			$emp_mst_emg_phone,		$emp_mst_dateofhire,		$emp_mst_sex,
-							$emp_mst_date_of_birth,		$emp_mst_marital_status,	$emp_mst_payrate,			$emp_mst_pay_period,	$emp_mst_remarks,		
-							$emp_mst_dash_access,		$emp_mst_create_by,			$emp_mst_create_date,		$audit_user	);
+$params_emp_mst = array(		$site_cd,					$emp_mst_empl_id,											$emp_mst_usr_grp,	
+								$emp_mst_name,				$emp_mst_title,					$emp_mst_status,			$emp_mst_homephone, 
+								$emp_mst_emg_name,			$emp_mst_emg_phone,											$emp_mst_sex, 
+															$emp_mst_marital_status,		$emp_mst_payrate,			$emp_mst_pay_period, 
+								$emp_mst_remarks,											$emp_mst_dash_access,		$emp_mst_create_by, 
+								$emp_mst_create_date,		$audit_user,												 );
+								
 				
 $stmt_emp_mst = sqlsrv_query( $conn,	$sql_insert_emp_mst,	$params_emp_mst);	
 
@@ -231,19 +238,19 @@ $sql_insert_emp_det = "INSERT INTO emp_det
 									NULL,						NULL,							NULL )";
 
 
-$params_emp_det = array(	$site_cd,							$ROW_ID,						
+$params_emp_det = array(			$site_cd,					$ROW_ID,						
 																$emp_det_supervisor_id,
 																																$emp_det_shift,					
 																								$emp_det_work_area,				$emp_det_craft,					$emp_det_work_grp, 				
 																$emp_det_email_id,				
 																								$emp_det_po_buyer, 				$emp_det_planner,				$emp_det_supervisor,			
-							$emp_det_mr_approver,				$emp_det_mr_limit,				$emp_det_wr_approver,			$emp_det_wo_budget_approver,	$emp_det_wo_approval_limit,		
-							$emp_det_pr_approver,				$emp_det_pr_approval_limit,		$emp_det_pm_generator,			
+									$emp_det_mr_approver,		$emp_det_mr_limit,				$emp_det_wr_approver,			$emp_det_wo_budget_approver,	$emp_det_wo_approval_limit,		
+									$emp_det_pr_approver,		$emp_det_pr_approval_limit,		$emp_det_pm_generator,			
 																
 																																								$emp_det_foreman,				
 																																$emp_det_msetup_mobile_user,
-							$emp_det_asset_tag_flag, 			$emp_det_time_card_enter,		$emp_det_time_card_void,		$emp_det_wo_gen_mr_pr,			$emp_det_wo_sched, 
-							$emp_det_mobile,					$emp_det_core,					$emp_det_webwork,				$emp_det_varchar1, 				$emp_det_varchar2,			
+									$emp_det_asset_tag_flag, 	$emp_det_time_card_enter,		$emp_det_time_card_void,		$emp_det_wo_gen_mr_pr,			$emp_det_wo_sched, 
+									$emp_det_mobile,			$emp_det_core,					$emp_det_webwork,				$emp_det_varchar1, 				$emp_det_varchar2,			
 									$emp_det_varchar3,			$emp_det_varchar4,				$emp_det_varchar5, 				$emp_det_varchar6,				$emp_det_varchar7,				
 									$emp_det_varchar8,			$emp_det_varchar9, 				$emp_det_varchar10,				$emp_det_varchar11,				$emp_det_varchar12,				
 									$emp_det_varchar13, 		$emp_det_varchar14,				$emp_det_varchar15,				$emp_det_varchar16,				$emp_det_varchar17, 

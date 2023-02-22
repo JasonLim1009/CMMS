@@ -79,10 +79,10 @@ $itm_det_datetime5 = $data['itm_det_datetime5'];
 
 $itm_det_acct_type = $data['itm_det_acct_type'];
 $itm_det_tax_cd = $data['itm_det_tax_cd'];
-//$itm_det_cr_code = $data['itm_det_cr_code'];
-//$itm_det_avg_cost = $data['itm_det_avg_cost'];
-//$itm_det_std_cost = $data['itm_det_std_cost'];
-//$itm_det_last_cost = $data['itm_det_last_cost'];
+$itm_det_cr_code = $data['itm_det_cr_code'];
+$itm_det_avg_cost = $data['itm_det_avg_cost'];
+$itm_det_std_cost = $data['itm_det_std_cost'];
+$itm_det_last_cost = $data['itm_det_last_cost'];
 
 
 
@@ -332,9 +332,9 @@ $sql_insert_itm_det = "INSERT INTO itm_det
 										?,							NULL,						NULL,									NULL,
 										NULL,						NULL,						NULL,									NULL,
 										NULL,						NULL,						NULL,									NULL, 
-										NULL,						NULL,						0,										NULL, 
-										NULL,						NULL,						NULL,									NULL, 
-										NULL,						NULL,						NULL,									NULL,
+										NULL,						NULL,						0,										?, 
+										?,							?,							NULL,									NULL, 
+										?,							NULL,						NULL,									NULL,
 										?,							?,							?,										?, 
 										?,							?,							?,										?, 
 										?,							?,							?,										?, 
@@ -349,13 +349,13 @@ $params_itm_det = array(				$site_cd,					$ROW_ID,						$itm_det_issue_uom,					
 																																		$itm_det_hzd_mtl, 
 										$itm_det_auto_spare,		$itm_det_critical_spare,		$itm_det_abc_class,
 										
-										$itm_det_part_deac_status,		$itm_det_order_pt,				$itm_det_maximum,			
+										$itm_det_part_deac_status,	$itm_det_order_pt,				$itm_det_maximum,			
 										$itm_det_acct_type,																					
 																																		
 																																	
-																																
-																																
-																																
+																																		$itm_det_std_cost, 
+										$itm_det_avg_cost,			$itm_det_last_cost,																						
+										$itm_det_cr_code,																				
 										$itm_det_tax_cd,			$itm_det_varchar1,				$itm_det_varchar2,					$itm_det_varchar3,
 										$itm_det_varchar4,			$itm_det_varchar5,				$itm_det_varchar6,					$itm_det_varchar7,
 										$itm_det_varchar8,			$itm_det_varchar9,				$itm_det_varchar10,					$itm_det_numeric1, 

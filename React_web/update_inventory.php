@@ -69,10 +69,10 @@ $itm_det_datetime5 = $data['itm_det_datetime5'];
 
 $itm_det_acct_type = $data['itm_det_acct_type'];
 $itm_det_tax_cd = $data['itm_det_tax_cd'];
-//$itm_det_cr_code = $data['itm_det_cr_code'];
-//$itm_det_avg_cost = $data['itm_det_avg_cost'];
-//$itm_det_std_cost = $data['itm_det_std_cost'];
-//$itm_det_last_cost = $data['itm_det_last_cost'];
+$itm_det_cr_code = $data['itm_det_cr_code'];
+$itm_det_avg_cost = $data['itm_det_avg_cost'];
+$itm_det_std_cost = $data['itm_det_std_cost'];
+$itm_det_last_cost = $data['itm_det_last_cost'];
 
 
 
@@ -155,6 +155,10 @@ $sql_itm_det = "UPDATE	itm_det
 
 				itm_det_acct_type = '".$itm_det_acct_type."',
 				itm_det_tax_cd = '".$itm_det_tax_cd."',
+				itm_det_cr_code = '".$itm_det_cr_code."',
+				itm_det_avg_cost = '".$itm_det_avg_cost."',
+				itm_det_std_cost = '".$itm_det_std_cost."',
+				itm_det_last_cost = '".$itm_det_last_cost."',
 				
 				audit_user = '".$audit_user."', 
 				audit_date = GETDATE()	
